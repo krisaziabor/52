@@ -3,7 +3,7 @@ import React from 'react';
 
 export default function Bio() {
   return (
-    <div className="grid gap-8">
+    <div className="flex flex-col gap-8">
       <Image
         className="dark:invert"
         src="/52-logo.svg"
@@ -12,7 +12,7 @@ export default function Bio() {
         height={38}
         priority
       />
-      <div className="flex flex-col w-1/2 gap-4 text-sm sm:text-base text-foreground">
+      <div className="flex flex-col w-full sm:w-1/2 gap-4 text-sm sm:text-base text-foreground">
         <p>
           A site dedicated to my efforts of becoming a person of habit and
           someone who has traditions for themself.
