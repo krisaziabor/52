@@ -5,7 +5,7 @@ export default function Bio() {
   return (
     <div className="flex flex-col gap-8">
       <Image
-        className="dark:invert"
+        className=""
         src="/52-logo.svg"
         alt="52 logo"
         width={180}
