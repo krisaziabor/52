@@ -5,6 +5,7 @@ interface ProjectListProps {
 }
 
 const ProjectList = ({ projects }: ProjectListProps) => {
+    // will be uncommented once final contents are ready
     // Format current date as "Month Day, Year"
     // const lastUpdated = new Date().toLocaleDateString('en-US', {
     //     year: 'numeric',
