@@ -12,7 +12,7 @@ export default function Bio() {
         height={38}
         priority
       />
-      <div className="flex flex-col w-1/2 gap-4 text-sm sm:text-base text-foreground/80">
+      <div className="flex flex-col w-1/2 gap-4 text-sm sm:text-base text-foreground">
         <p>
           A site dedicated to my efforts of becoming a person of habit and
           someone who has traditions for themself.
