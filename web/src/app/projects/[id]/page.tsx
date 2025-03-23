@@ -8,6 +8,8 @@ import { InlineCode } from '@/app/components/CodeBlock';
 import Link from 'next/link';
 import ZoomableImage from '@/app/components/ZoomableImage';
 import ClientTOC from '@/app/components/ClientTOC';
+import MobileProgressWrapper from '@/app/components/MobileProgressWrapper';
+import VimeoWrapper from '@/app/components/VimeoWrapper';
 
 // Custom Markdown components
 const MarkdownImage = ({ alt, src }: { alt?: string; src?: string }) => {
@@ -98,6 +100,9 @@ export default async function ProjectPage(props: ProjectPageProps) {
   
   return (
     <div className="relative min-h-screen">
+      {/* Mobile Progress Bar - only visible on small/medium screens */}
+      <MobileProgressWrapper />
+      
       {/* Back button on the far left - sticky */}
       <div className="fixed left-8 top-24 hidden lg:block z-10">
         <Link 
@@ -147,6 +152,11 @@ export default async function ProjectPage(props: ProjectPageProps) {
               },
               code: {
                 component: InlineCode,
+              },
+              VimeoPlayer: {
+                component: ({ id }: { id: string }) => (
+                  <VimeoWrapper vimeoId={id} />
+                ),
               },
               p: {
                 props: {
