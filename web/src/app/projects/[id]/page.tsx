@@ -26,7 +26,9 @@ const MarkdownImage = ({ alt, src }: { alt?: string; src?: string }) => {
 
 
 interface ProjectPageProps {
-  params: Promise<{ id: string }> | { id: string };
+  params: {
+    id: string | Promise<string>; // ID can be a string or a Promise that resolves to a string
+  };
 }
 
 // Get project data by ID
