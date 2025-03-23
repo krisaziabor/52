@@ -9,15 +9,13 @@ Well, if you use Spotify, chances are you have to stop Happy Little Pill prematu
 
 ## Problem
 
-### Have video of Apple Music play next vs Spotify system
-
 As a former Spotify user and now Apple Music convert, I realize that Apple's designers and developers have solved this debacle pretty seamlessly.
 
 When pressing down on a song, Apple Music allows users to Play Next or Play Later. The two acts are simply communicated but extremely powerful and efficient for users.
 
-FIFO (First In, First Out) and LIFO (Last In, First Out) are two types of data structures used in programming. FIFO processes elements in the order they were added, while LIFO processes the most recently added element first.[^1]
+Not to get too deep into programming theory and practice, but Apple Music's dual functionality gives the user the chance to reap the benefits of both FIFO (first in, first out) and LIFO (last in, first out).
 
-[^1]: Learn more about FIFO and LIFO [here](https://en.wikipedia.org/wiki/FIFO_and_LIFO_accounting).
+FIFO (First In, First Out) and LIFO (Last In, First Out) are two types of data structures used in programming. FIFO processes elements in the order they were added, while LIFO processes the most recently added element first.
 
 ![FIFO & LIFO](/01/02.jpg)
 

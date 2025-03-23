@@ -30,14 +30,16 @@ interface ProjectPageProps {
 }
 
 // Get project data by ID
-function getProjectById(id: string): Project | undefined {
-  return projects.find(project => project.id.toString() === id);
+async function getProjectById(id: string | Promise<string>): Promise<Project | undefined> {
+  const resolvedId = await Promise.resolve(id);
+  return projects.find(project => project.id.toString() === resolvedId);
 }
 
 // Function to get the markdown content
 async function getProjectContent(id: string) {
   // Projects are stored in folders named "01", "02", etc. (with leading zero)
-  const paddedId = id.padStart(2, '0');
+  const resolvedID = await Promise.resolve(id);
+  const paddedId = resolvedID.padStart(2, '0');
   const filePath = path.join(process.cwd(), 'src/app/data/projects', paddedId, 'study.md');
   
   try {
@@ -58,7 +60,9 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: ProjectPageProps) {
-  const project = await getProjectById(params.id);
+  // Resolve params before using
+  const resolvedParams = await Promise.resolve(params);
+  const project = await getProjectById(resolvedParams.id);
   
   if (!project) {
     return {
@@ -72,14 +76,17 @@ export async function generateMetadata({ params }: ProjectPageProps) {
     openGraph: {
       title: `${project.name} | 52 by KAKA`,
       description: project.description,
-      images: [project.photos[0]],
+      images: "/preview.jpg",
     },
   };
 }
 
 export default async function ProjectPage({ params }: ProjectPageProps) {
-  const projectData = await getProjectContent(params.id);
-  const project = getProjectById(params.id);
+  // Ensure params is fully resolved before using
+  const resolvedParams = await Promise.resolve(params);
+  
+  const projectData = await getProjectContent(resolvedParams.id);
+  const project = await getProjectById(resolvedParams.id);
   
   // Check if project doesn't exist or is marked as coming soon
   if (!project || project.comingSoon || !projectData) {
