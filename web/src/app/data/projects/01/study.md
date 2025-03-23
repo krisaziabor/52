@@ -7,7 +7,7 @@ title: Spotify, play next
 
 Picture this: you are doing work in your bed and dive deep into a nostalgia kick and start listening to 2010s pop hits. While Troye Sivan's Happy Little Pill (a really deep cut I just rediscovered) is playing, you remember another of his early hits – YOUTH. What an absolute classic of a song. You just have to play it. You already have a queue of other once-forgotten records but of course, you want YOUTH to be the next song that plays. You also want to maintain the queue you have. What do you do?
 
-Well, if you use Spotify, chances are you have to stop Happy Little Pill prematurely and press on YOUTH before the top song in your queue plays and you are forced to go back in add it once more. Or, the alternative is you stop what you are doing, enter the app, add the song to your queue, and drag it to the top. It doesn't just seem like a hassle; it is one.
+Well, if you use Spotify, chances are you have to stop Happy Little Pill prematurely and press on YOUTH before the top song in your queue plays and you are forced to go back in add it once more. Or, the alternative is you stop what you are doing, enter the app, add the song to your queue, and drag it to the top (see video above). It doesn't just seem like a hassle; it is one.
 
 ## Problem
 
@@ -35,7 +35,7 @@ Hoping to go beyond just design and actually produce a solution to this problem,
 
 As all Raycast extensions are open-source, my goal was to develop upon the existing code with the hopes that my pull request would be accepted in a later update. Unfortunately, the code would never get to that stage as I concluded the feature is nearly impossible to implement well.
 
-Spotify's API is limiting in the sense that its core purpose is to give developers the ability to present streaming data to existing Spotify users (see Airbuds and Volt.fm). It is not to encourage interested parties to expand upon Spotify's functionality or alter the streaming experience. When I first had the idea for this feature, I was eager to dive into the API and quickly solve this problem. I shortly found out that you cannot remove songs from a queue. This will be important in a quick moment. Let's look at the algorithms I attempted to implement.
+Spotify's API is limiting in the sense that its core purpose is to give developers the ability to present streaming data to existing Spotify users (see [Airbuds](https://apps.apple.com/us/app/airbuds-widget/id1638906106) and [Volt.fm](https://volt.fm/)). It is not to encourage interested parties to expand upon Spotify's functionality or alter the streaming experience. When I first had the idea for this feature, I was eager to dive into the API and quickly solve this problem. I shortly found out that you cannot remove songs from a queue. This will be important in a quick moment. Let's look at the algorithms I attempted to implement.
 
 The commonality through both of them is that to get a new queue where a selected song is at the top, all existing songs need to be removed, the selected song is then added to the now empty queue, and only after this, are the previously queued songs all added back in their original order.
 
