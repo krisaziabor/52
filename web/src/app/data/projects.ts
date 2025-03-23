@@ -16,7 +16,7 @@ export const projects: Project[] = [
   {
     id: 2,
     name: "Introducing 52",
-    description: "After creating the first of the 52 projects, I designated the week to designing & coding its home on the web.",
+    description: "Can I build a site in only a weekend? Testing the trend of vibe coding while focusing on my product sense to create the best case study website.",
     photos: ["/studies/02/01.jpg"],
     comingSoon: true
   },
