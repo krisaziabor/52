@@ -114,11 +114,9 @@ When I compare this to the Misión Impossible algo, I think this has even more f
 
 ![Left: Spotify's existing "add to queue" icon. Right: My new "add to queue" icon.](/01/01.jpg)
 
-#### Iconography
-
 Realizing that I was not going to be able to implement an actual solution with code, I chose to craft Spotify's mobile app from scratch and add the "Play next" feature. It was a process that left me questioning whether trying to replace the smallest of icons or the most intricate of details was worth it. However, it became great Figma practice as I was forced to use auto layout and other tools consistently and thoroughly. Spotify is certainly not an app without its fair share of naysayers (link new yorker piece) about its design, but replicating the UI of such a popular app felt valuable. Anyways, enough of the overarching yapping. Let's get into the changes I made.
 
-##### Critiques of current design
+#### Iconography
 
 ![A perhaps over-serious analysis of Spotify's current icon](/01/06.jpg)
 
@@ -131,8 +129,6 @@ The top of the icon shows a plus symbol whose circular border blends to the back
 The icon by itself doesn't have any explanation – if the circular path is to suggest that any song added after a queue has been established will start at the bottom of the queue, it certainly doesn't make it clear enough.
 
 I know this because by simply flipping the order of the two central elements and sending the two icons to my friends, everyone judged that the left meant add to the top of the queue, while the right meant add to the bottom.
-
-##### Offering new icon
 
 The icon in its current usage has meanings I do not think are clear enough when standing on its own. However, I do not think it needs tearing apart. By simply adding its opposite form alongside it, the distinction doesn't even need to be considered because the two meanings are simple; you can play this song next or play it last.
 
