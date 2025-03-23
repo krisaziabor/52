@@ -27,21 +27,19 @@ const MarkdownImage = ({ alt, src }: { alt?: string; src?: string }) => {
 
 interface ProjectPageProps {
   params: {
-    id: string | Promise<string>; // ID can be a string or a Promise that resolves to a string
+    id: string; // ID is always a string in Next.js dynamic routes
   };
 }
 
 // Get project data by ID
-async function getProjectById(id: string | Promise<string>): Promise<Project | undefined> {
-  const resolvedId = await Promise.resolve(id);
-  return projects.find(project => project.id.toString() === resolvedId);
+async function getProjectById(id: string): Promise<Project | undefined> {
+  return projects.find(project => project.id.toString() === id);
 }
 
 // Function to get the markdown content
 async function getProjectContent(id: string) {
   // Projects are stored in folders named "01", "02", etc. (with leading zero)
-  const resolvedID = await Promise.resolve(id);
-  const paddedId = resolvedID.padStart(2, '0');
+  const paddedId = id.padStart(2, '0');
   const filePath = path.join(process.cwd(), 'src/app/data/projects', paddedId, 'study.md');
   
   try {
@@ -62,10 +60,9 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: ProjectPageProps) {
-  // Resolve params before using
-  
-  const resolvedParams = await Promise.resolve(params);
-  const id = typeof resolvedParams.id === 'string' ? resolvedParams.id : await resolvedParams.id;
+  // Await params before accessing properties
+  const resolvedParams = await params;
+  const id = resolvedParams.id;
   
   const project = await getProjectById(id);
   
@@ -87,11 +84,10 @@ export async function generateMetadata({ params }: ProjectPageProps) {
 }
 
 export default async function ProjectPage({ params }: ProjectPageProps) {
-  // Ensure params is fully resolved before using
-  const resolvedParams = await Promise.resolve(params);
-  const id = typeof resolvedParams.id === 'string' ? resolvedParams.id : await resolvedParams.id;
-
-
+  // Await params before accessing properties
+  const resolvedParams = await params;
+  const id = resolvedParams.id;
+  
   const projectData = await getProjectContent(id);
   const project = await getProjectById(id);
   
