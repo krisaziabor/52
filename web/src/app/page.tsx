@@ -1,4 +1,4 @@
-import Bio from "./components/Bio";
+import Bio from "./components/Hero";
 import FullWebsiteButton from "./components/FullWebsiteButton";
 import ProjectList from "./components/ProjectList";
 import { projects } from "./data/projects";
