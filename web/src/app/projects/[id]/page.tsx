@@ -26,9 +26,7 @@ const MarkdownImage = ({ alt, src }: { alt?: string; src?: string }) => {
 
 
 interface ProjectPageProps {
-  params: {
-    id: string; // ID is always a string in Next.js dynamic routes
-  };
+  params: Promise<{ id: string }>;
 }
 
 // Get project data by ID
@@ -59,10 +57,10 @@ export async function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({ params }: ProjectPageProps) {
+export async function generateMetadata(props: ProjectPageProps) {
   // Await params before accessing properties
-  const resolvedParams = await params;
-  const id = resolvedParams.id;
+  const params = await props.params;
+  const id = params.id;
   
   const project = await getProjectById(id);
   
@@ -83,10 +81,10 @@ export async function generateMetadata({ params }: ProjectPageProps) {
   };
 }
 
-export default async function ProjectPage({ params }: ProjectPageProps) {
+export default async function ProjectPage(props: ProjectPageProps) {
   // Await params before accessing properties
-  const resolvedParams = await params;
-  const id = resolvedParams.id;
+  const params = await props.params;
+  const id = params.id;
   
   const projectData = await getProjectContent(id);
   const project = await getProjectById(id);
