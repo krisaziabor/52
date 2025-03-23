@@ -38,6 +38,12 @@ const glare = localFont({
   weight: "400",
 });
 
+const diatypemono = localFont({
+  src: "../../fonts/ABCDiatypeMonoEdu-Regular.otf",
+  variable: "--font-diatype-mono",
+  weight: "400",
+});
+
 export const metadata: Metadata = {
   metadataBase: new URL('https://52.krisaziabor.com'),
   title: "52 | KAKA",
@@ -84,7 +90,7 @@ export default function RootLayout({
   return (
     <html lang="en">
        <body
-        className={`${semidiatype.variable} ${glare.variable} ${boldsemidiatype.variable} ${boldfragment.variable} ${fragmentsans.variable} ${italicfragmentsans.variable} antialiased`}
+        className={`${semidiatype.variable} ${diatypemono.variable} ${glare.variable} ${boldsemidiatype.variable} ${boldfragment.variable} ${fragmentsans.variable} ${italicfragmentsans.variable} antialiased`}
       >
         {children}
       </body>
