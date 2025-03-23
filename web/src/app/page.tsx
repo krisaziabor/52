@@ -1,5 +1,5 @@
-import Bio from "./components/bio";
-import FullWebsiteButton from "./components/full-website-button";
+import Bio from "./components/Bio";
+import FullWebsiteButton from "./components/FullWebsiteButton";
 import ProjectList from "./components/ProjectList";
 import { projects } from "./data/projects";
 
