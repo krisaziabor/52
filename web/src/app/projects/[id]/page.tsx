@@ -26,7 +26,7 @@ const MarkdownImage = ({ alt, src }: { alt?: string; src?: string }) => {
 
 
 interface ProjectPageProps {
-  params: { id: string };
+  params: Promise<{ id: string }> | { id: string };
 }
 
 // Get project data by ID
@@ -61,8 +61,11 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: ProjectPageProps) {
   // Resolve params before using
+  
   const resolvedParams = await Promise.resolve(params);
-  const project = await getProjectById(resolvedParams.id);
+  const id = typeof resolvedParams.id === 'string' ? resolvedParams.id : await resolvedParams.id;
+  
+  const project = await getProjectById(id);
   
   if (!project) {
     return {
@@ -84,9 +87,11 @@ export async function generateMetadata({ params }: ProjectPageProps) {
 export default async function ProjectPage({ params }: ProjectPageProps) {
   // Ensure params is fully resolved before using
   const resolvedParams = await Promise.resolve(params);
-  
-  const projectData = await getProjectContent(resolvedParams.id);
-  const project = await getProjectById(resolvedParams.id);
+  const id = typeof resolvedParams.id === 'string' ? resolvedParams.id : await resolvedParams.id;
+
+
+  const projectData = await getProjectContent(id);
+  const project = await getProjectById(id);
   
   // Check if project doesn't exist or is marked as coming soon
   if (!project || project.comingSoon || !projectData) {
