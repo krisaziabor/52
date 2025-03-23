@@ -173,7 +173,7 @@ I was not able to produce something meaningful but learned a lot about the inner
 
 I am so excited to finally start this weekly practice. Since shifting my mind more to product than solely engineering, I have been more inspired than ever to hone my craft and create. This is only the beginning <3
 
-Also, this scenario about Troye Sivan's Happy Little Pill and YOUTH is real. If you want the 2010s forgotten gems playlist, here you are :&gt;
+Also, this scenario about Troye Sivan's Happy Little Pill and YOUTH is real. If you want the 2010s forgotten gems playlist, [here you are](https://open.spotify.com/playlist/7EvbkUqRVNz9ShQB8XHhzs?si=1b62e8854cd04c1d) :)
 
 ## Colophon
 
