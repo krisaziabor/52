@@ -1,19 +1,19 @@
 'use client';
 
-import Bio from "./components/Hero";
-import ContentToggle from "./components/ContentToggle";
-import ProjectList from "./components/ProjectList";
-import { projects as productProjects } from "./data/product/projects";
-import { ContentProvider } from "./context/ContentContext";
+import Bio from "../components/Hero";
+import ContentToggle from "../components/ContentToggle";
+import ProjectList from "../components/ProjectList";
+import { projects as fiftyTwoProjects } from "../data/52/projects";
+import { ContentProvider } from "../context/ContentContext";
 import { useEffect } from "react";
-import { useContent } from "./context/ContentContext";
+import { useContent } from "../context/ContentContext";
 
-function ProductContent() {
+function FiftyTwoContent() {
   const { setContentType } = useContent();
   
-  // Force content type to 'product' when on home page
+  // Force content type to '52' when on this page
   useEffect(() => {
-    setContentType('product');
+    setContentType('52');
   }, [setContentType]);
 
   return (
@@ -25,16 +25,16 @@ function ProductContent() {
         </div>
       </div>
       <div className="col-span-2 row-span-1 w-full">
-        <ProjectList projects={productProjects} />
+        <ProjectList projects={fiftyTwoProjects} />
       </div>
     </div>
   );
 }
 
-export default function Home() {
+export default function FiftyTwoPage() {
   return (
     <ContentProvider>
-      <ProductContent />
+      <FiftyTwoContent />
     </ContentProvider>
   );
 }

@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 
-const MobileProgressBar: React.FC = () => {
+const ProgressBar: React.FC = () => {
   const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
@@ -27,7 +27,7 @@ const MobileProgressBar: React.FC = () => {
   }, []);
 
   return (
-    <div className="fixed top-0 left-0 w-full h-1 bg-gray-200 z-50 lg:hidden">
+    <div className="fixed top-0 left-0 w-full h-1 bg-gray-200 z-50">
       <div 
         className="h-full bg-black transition-all duration-150 ease-out"
         style={{ width: `${scrollProgress}%` }}
@@ -36,4 +36,4 @@ const MobileProgressBar: React.FC = () => {
   );
 };
 
-export default MobileProgressBar;
+export default ProgressBar;
