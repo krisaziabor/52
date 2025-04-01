@@ -103,6 +103,13 @@ const VimeoPlayer: React.FC<VimeoPlayerProps> = ({ vimeoId }) => {
     if (isPlayerReady) {
       postMessage('setVolume', 0); // Start muted by default
       postMessage('play'); // Ensure playback starts
+      
+      // Add a small delay to ensure playback initiates even if the player isn't fully ready
+      const playTimeout = setTimeout(() => {
+        postMessage('play');
+      }, 500);
+      
+      return () => clearTimeout(playTimeout);
     }
   }, [isPlayerReady]);
 
@@ -114,8 +121,8 @@ const VimeoPlayer: React.FC<VimeoPlayerProps> = ({ vimeoId }) => {
       >
         <iframe
           ref={playerRef}
-          src={`https://player.vimeo.com/video/${vimeoId}?background=1&autoplay=1&controls=0&loop=1&transparent=0&dnt=1`}
-          allow="autoplay; fullscreen; picture-in-picture"
+          src={`https://player.vimeo.com/video/${vimeoId}?background=1&autoplay=1&autopause=0&controls=0&loop=1&transparent=0&dnt=1&muted=1`}
+          allow="autoplay; fullscreen; picture-in-picture; encrypted-media"
           className="w-full h-full pointer-events-none"
           title="Vimeo video player"
         />
