@@ -4,6 +4,7 @@ export interface Project {
   description: string;
   photos: string[]; // Array of photo URLs
   comingSoon?: boolean; // Optional flag to mark as coming soon
+  passwordProtected?: boolean; // Optional flag to mark as password protected
 }
 
 export const projects: Project[] = [

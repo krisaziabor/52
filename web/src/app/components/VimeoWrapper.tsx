@@ -9,6 +9,7 @@ const VimeoPlayer = dynamic(() => import('./VimeoPlayer'), {
 
 interface VimeoWrapperProps {
   vimeoId: string;
+  className?: string;
 }
 
 export default function VimeoWrapper({ vimeoId }: VimeoWrapperProps) {
