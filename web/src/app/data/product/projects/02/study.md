@@ -20,7 +20,7 @@ In September 2024, I applied once more and successfully joined the studio. After
 
 ## Studio leadership
 
-  In my first few months in the leadership role, I have instituted some meaningful changes to make DAY better at serving its purpose: creating fantastic design & strengthening Yale;s design community.
+  In my first few months in the leadership role, I have instituted some meaningful changes to make DAY better at serving its purpose: creating fantastic design & strengthening Yale's design community.
   
 ### Product management workflow
 
@@ -37,6 +37,9 @@ In September 2024, I applied once more and successfully joined the studio. After
 
   While I embraced the simplicity and familiarity of iMessage for studio communication, I pushed for the addition of professional product management software.
   [Linear](https://linear.app) is a product I have admired for years, and I was so excited to introduce it to everyone in the studio.
+
+  ![Much better, no?](/product/02/Linear.png)
+
   By establishing a system where project leads can delegate tasks and all members can document developements in one space, my co-pres [Aditya](https://adityadas.design) and I have easily tracked progress and cut at least ten minutes of status update chats from the weekly studio meetings.
 
 #### Future plans of client dashboard
