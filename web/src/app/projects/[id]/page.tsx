@@ -11,6 +11,7 @@ import ZoomableImage from '@/app/components/ZoomableImage';
 import ClientTOC from '@/app/components/ClientTOC';
 import ProgressWrapper from '@/app/components/ProgressWrapper';
 import VimeoWrapper from '@/app/components/VimeoWrapper';
+import ProjectMetadata from '@/app/components/ProjectMetadata';
 
 // Custom Markdown components
 const MarkdownImage = ({ alt, src }: { alt?: string; src?: string }) => {
@@ -43,13 +44,13 @@ async function getProjectContent(id: string) {
   const paddedId = id.padStart(2, '0');
   
   // Try first from product folder
-  const filePath = path.join(process.cwd(), 'src/app/data/product/projects', paddedId, 'study.md');
+  const productPath = path.join(process.cwd(), 'src/app/data/product/projects', paddedId, 'study.md');
   
   try {
-    console.log(`Attempting to read file at: ${filePath}`);
-    const fileContent = fs.readFileSync(filePath, 'utf8');
+    console.log(`Attempting to read file at: ${productPath}`);
+    const fileContent = fs.readFileSync(productPath, 'utf8');
     const { content, data } = matter(fileContent);
-    return { content, frontmatter: data };
+    return { content, frontmatter: data, source: 'product' };
   } catch (error) {
     // If file not found, try the legacy path
     try {
@@ -57,7 +58,7 @@ async function getProjectContent(id: string) {
       console.log(`Attempting to read file at legacy path: ${legacyPath}`);
       const fileContent = fs.readFileSync(legacyPath, 'utf8');
       const { content, data } = matter(fileContent);
-      return { content, frontmatter: data };
+      return { content, frontmatter: data, source: 'legacy' };
     } catch (legacyError) {
       console.error(`Error reading project file: ${error}`);
       console.error(`Error reading legacy project file: ${legacyError}`);
@@ -124,10 +125,7 @@ export default async function ProjectPage(props: ProjectPageProps) {
             href="/" 
             className="text-gray-400 hover:text-gray-700 transition-colors duration-200 flex items-center group"
           >
-            <span className="text-xl inline-block mr-2 transform group-hover:-translate-x-1 transition-transform duration-200 font-[family-name:var(--font-diatype-mono)]">←</span>
-            <span className="font-[family-name:var(--font-glare)] text-sm">
-              {parseInt(project.id.toString()) < 10 ? `0${project.id}` : project.id}
-            </span>
+            <span className="text-xl inline-block transform group-hover:-translate-x-1 transition-transform duration-200 font-[family-name:var(--font-diatype-mono)]">←</span>
           </Link>
         </div>
         
@@ -135,23 +133,32 @@ export default async function ProjectPage(props: ProjectPageProps) {
         <ClientTOC projectId={project.id} />
         
         {/* Main content with left-aligned text */}
-        <div className="container mx-auto px-4 py-8 md:py-16 max-w-3xl">
+        <div className="container mx-auto px-4 py-8 md:py-16 max-w-3xl lg:pl-24">
           {/* Mobile back button (only visible on small/medium screens) */}
           <div className="mb-6 lg:hidden">
             <Link 
               href="/" 
               className="text-gray-500 hover:text-gray-700 transition-colors duration-200 flex items-center group"
             >
-              <span className="inline-block mr-2 transform group-hover:-translate-x-1 transition-transform duration-200 font-[family-name:var(--font-diatype-mono)]">←</span>
-              <span className="font-[family-name:var(--font-glare)]">
-                {parseInt(project.id.toString()) < 10 ? `0${project.id}` : project.id}
-              </span>
+              <span className="inline-block transform group-hover:-translate-x-1 transition-transform duration-200 font-[family-name:var(--font-diatype-mono)]">←</span>
             </Link>
           </div>
           
-          <h1 className="text-4xl md:text-5xl font-[family-name:var(--font-glare)] mb-8">
+          {/* Display date for product projects if available */}
+          {projectData.source === 'product' && projectData.frontmatter && projectData.frontmatter.date && (
+            <div className="mb-2 font-[family-name:var(--font-diatype-mono)] tracking-widest text-xs uppercase text-gray-600 font-medium">
+              {(projectData.frontmatter.date as string).toUpperCase()}
+            </div>
+          )}
+          
+          <h1 className="text-4xl md:text-5xl font-[family-name:var(--font-glare)] mb-6">
             {project.name}
           </h1>
+          
+          {/* Display metadata only for product projects */}
+          {projectData.source === 'product' && projectData.frontmatter && (
+            <ProjectMetadata metadata={projectData.frontmatter} showDate={true} />
+          )}
         
         <div className="prose prose-lg max-w-none">
           <Markdown
