@@ -1,6 +1,12 @@
 ---
 id: 1
 title: Full-Stack @ Fidelity
+date: Summer 2024
+work: Internship
+discipline: Full-stack software enginnering
+tech stack: AWS, Linux, Windows, Python Django, Terraform, Jenkins
+team: Me, Jenny Nguyen, Shashwat Ghevde
+special thanks: Alec Chum, Nikki Bratten, The rest of the MFT & CAPE team
 ---
 
 ![Fidelity Investments](/product/01/FidelityCover.jpg)

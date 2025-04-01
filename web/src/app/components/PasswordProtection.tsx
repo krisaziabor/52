@@ -64,9 +64,15 @@ const PasswordProtection: React.FC<PasswordProtectionProps> = ({ projectId, proj
           <h1 className="text-3xl font-[family-name:var(--font-glare)] mb-2">
             {projectName}
           </h1>
-          <p className="text-gray-600 font-[family-name:var(--font-fragment-sans)]">
-            This case study is protected by NDA. Please enter the password to view.
-          </p>
+            <p className="text-gray-600 font-[family-name:var(--font-fragment-sans)]">
+            Hey! This case study is password protected because I signed an NDA as an intern. If you think you should have access, {' '}
+            <a 
+              href="mailto:kris.aziabor@yale.edu" 
+              className="text-blue-500 hover:underline"
+            >
+              reach out!
+            </a>
+            </p>
         </div>
         
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -95,7 +101,7 @@ const PasswordProtection: React.FC<PasswordProtectionProps> = ({ projectId, proj
         </form>
         
         <div className="mt-8 text-sm text-gray-500 font-[family-name:var(--font-fragment-sans)]">
-          <p>If you need the password, please contact me directly.</p>
+          <p>Sorry for the inconvenience :( Enjoy looking around!</p>
         </div>
       </div>
     </div>

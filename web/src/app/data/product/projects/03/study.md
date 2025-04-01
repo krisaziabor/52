@@ -1,6 +1,12 @@
 ---
 id: 3
 title: Linkus
+work: Coursework (Interactive Design and the Internet)
+date: Fall 2024
+discipline: Product design, Product research
+tech stack: Figma
+team: Me
+special thanks: Zack Hauptman, Alvin Ashiatey, Theo Haggins
 ---
 ![Mockups of the Linkus interface](/product/03/Linkus.jpg)
 
