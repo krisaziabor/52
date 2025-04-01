@@ -19,7 +19,7 @@ Not to get too deep into programming theory and practice, but Apple Music's dual
 
 FIFO (First In, First Out) and LIFO (Last In, First Out) are two types of data structures used in programming. FIFO processes elements in the order they were added, while LIFO processes the most recently added element first.
 
-![In FIFO, Happy Little Pill would be the last to play as it was the last to enter. But in LIFO, it would immediately play next.](/01/02.jpg)
+![In FIFO, Happy Little Pill would be the last to play as it was the last to enter. But in LIFO, it would immediately play next.](/52/01/02.jpg)
 
 Apple's Play Next feature matches the FIFO practices that are seen in stacks. By pressing one button, the song I have just controlled (which is the last relative to the others in the current stack) can become the first one to play. However, if I want to add something to a list of songs while being content with it playing last, I can employ the queue structure and have it go to the bottom. Using two forms of data structures that are usually seen as oppositional has actually produced a beautiful harmony.
 
@@ -29,7 +29,7 @@ This week's project is to bring this dual functionality to Spotify within its cu
 
 ### Development – Raycast extension
 
-![Adding onto the existing extension, I tried to create a "Add To Top of Queue" function.](/01/03.jpg)
+![Adding onto the existing extension, I tried to create a "Add To Top of Queue" function.](/52/01/03.jpg)
 
 Hoping to go beyond just design and actually produce a solution to this problem, I instantly looked towards Raycast. One of my favorite apps on my computer for the past three years, Raycast is a launcher (in other words, a replacement for Mac's Spotlight feature) that has a powerful and ever-growing set of extensions. One of them is a Spotify extension that lets users remotely control their music. With Raycast's new AI extension feature, you can even give it a prompt in full natural language and watch as magic happens right in front of you.
 
@@ -92,7 +92,7 @@ static clearSpotifyQueue(init) { //Recursive
 
 The general idea is to recursively go through the queue, waiting to see if the next song in the queue matches the 'tag' track – in this example, Band of One's Misión Impossible. If there is a match, you can play the song. If not, you skip past it, removing it from the queue.
 
-![A visualization of nelson-t's Misión Impossible algorithm](/01/04.jpg)
+![A visualization of nelson-t's Misión Impossible algorithm](/52/01/04.jpg)
 
 I have had this code snippet saved onto my [bmrks](https://bmrks.com/) and [cosmos](https://cosmos.so/) for ages. But when I looked deeper into the code I realized something was glaringly wrong.
 
@@ -102,7 +102,7 @@ The main objective of the feature is to let users continue listening to their cu
 
 #### Temporary Playlist
 
-![A visualization of the temp playlist algo](/01/05.jpg)
+![A visualization of the temp playlist algo](/52/01/05.jpg)
 
 Other people trying to solve similar problems thought of creating a temporary playlist to hold the songs in the queue. You would then skip through all the songs in the queue, play the desired song, and then iterate through the playlist and add a track to the queue one by one.
 
@@ -112,13 +112,13 @@ When I compare this to the Misión Impossible algo, I think this has even more f
 
 ### Design – reworking Spotify's mobile app
 
-![Left: Spotify's existing "add to queue" icon. Right: My new "add to queue" icon.](/01/01.jpg)
+![Left: Spotify's existing "add to queue" icon. Right: My new "add to queue" icon.](/52/01/01.jpg)
 
 Realizing that I was not going to be able to implement an actual solution with code, I chose to craft Spotify's mobile app from scratch and add the "Play Next" feature. It was a process that left me questioning whether trying to replace the smallest of icons or the most intricate of details was worth it. However, it became great Figma practice as I was forced to use auto layout and other tools consistently and thoroughly. Spotify is certainly not an app without its fair share of naysayers (link New Yorker piece) about its design, but replicating the UI of such a popular app felt valuable. Anyway, enough of the overarching yapping. Let's get into the changes I made.
 
 #### Iconography
 
-![A perhaps over-serious analysis of Spotify's current icon](/01/06.jpg)
+![A perhaps over-serious analysis of Spotify's current icon](/52/01/06.jpg)
 
 When I was conceptualizing the tweaks I was going to make, I kept coming back to the "Add to Queue" icon. I knew why it made sense, but at the same time, I felt that it didn't.
 
@@ -136,20 +136,20 @@ The icon in its current usage has meanings I do not think are clear enough when 
 
 ##### Swipe actions
 
-![Enhancing the current right-swipe to include functionality for both queue actions](/01/08.jpg)
+![Enhancing the current right-swipe to include functionality for both queue actions](/52/01/08.jpg)
 
 Largely inspired by the swipe actions functionality in Apple Music, I morphed Spotify's current right-swipe feature to give users the option of adding a song to the top or bottom of the queue. Given that the add to queue option comes second to play next, I gave it a darker green background to emphasize the distinction.
 
 ##### Action Toolbar
 
-![Modifying the options in the current action toolbar to support new functionality](/01/07.jpg)
+![Modifying the options in the current action toolbar to support new functionality](/52/01/07.jpg)
 
 By simply adding the "Play next" feature on top of the "Add to Queue" and using the new icon, users can quickly understand the new functionality and have access to it quickly if swiping right isn't something they usually do.
 
 #### Prototypes
 
-![Flow 1 – Swipe actions](/01/10.jpg)
-![Flow 2 – Action toolbar](/01/09.jpg)
+![Flow 1 – Swipe actions](/52/01/10.jpg)
+![Flow 2 – Action toolbar](/52/01/09.jpg)
 
 ## Reflecting
 

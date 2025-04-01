@@ -96,6 +96,8 @@ export async function generateMetadata(props: ProjectPageProps) {
   };
 }
 
+import ProjectContentWrapper from '@/app/components/ProjectContentWrapper';
+
 export default async function ProjectPage(props: ProjectPageProps) {
   // Await params before accessing properties
   const params = await props.params;
@@ -111,7 +113,7 @@ export default async function ProjectPage(props: ProjectPageProps) {
   
   console.log("Project data loaded:", !!projectData);
   
-  return (
+  const content = (
       <div className="relative min-h-screen">
         {/* Progress Bar */}
         <ProgressWrapper />
@@ -288,5 +290,12 @@ export default async function ProjectPage(props: ProjectPageProps) {
         </div>
         </div>
       </div>
+  );
+  
+  // Wrap content with the password protection component
+  return (
+    <ProjectContentWrapper project={project}>
+      {content}
+    </ProjectContentWrapper>
   );
 }

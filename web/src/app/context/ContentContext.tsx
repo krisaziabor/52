@@ -23,7 +23,7 @@ export const ContentProvider: React.FC<{ children: ReactNode }> = ({ children })
       if (savedType === 'product' || savedType === '52') {
         setContentType(savedType);
       }
-    } catch (error) {
+    } catch {
       // Ignore localStorage errors
     }
   }, []);
@@ -32,7 +32,7 @@ export const ContentProvider: React.FC<{ children: ReactNode }> = ({ children })
   useEffect(() => {
     try {
       localStorage.setItem('contentType', contentType);
-    } catch (error) {
+    } catch {
       // Ignore localStorage errors
     }
   }, [contentType]);

@@ -29,12 +29,6 @@ const ProjectList = ({ projects: propProjects }: ProjectListProps) => {
 
     return (
         <div className="w-full">
-            {/* Last updated timestamp */}
-            <div className="mb-4">
-                <div className="text-sm text-gray-500 mb-4">Last updated on 03/22</div>
-                <div className="border-t border-gray-200 mb-6"></div>
-            </div>
-            
             {sortedProjects.map((project, index) => (
                 <div key={project.id}>
                     {index > 0 && <div className="border-t border-gray-200 my-6"></div>}
@@ -83,7 +77,7 @@ const ProjectList = ({ projects: propProjects }: ProjectListProps) => {
                         </div>
                     ) : (
                         <Link href={getProjectUrl(project.id)} className="group">
-                            <div className="flex flex-col md:flex-row w-full items-start transition-opacity hover:opacity-80">
+                            <div className="flex flex-col md:flex-row w-full items-start transition-all duration-300 md:opacity-60 md:hover:opacity-100 md:filter md:grayscale md:hover:grayscale-0">
                                 <div className="flex justify-between items-center md:block mb-4 md:mb-0 w-full md:w-auto">
                                     <div className="font-[family-name:var(--font-semi-diatype)] text-7xl md:text-9xl md:w-24 text-left md:text-right md:mr-24">
                                         {String(project.id).padStart(2, '0')}

@@ -13,7 +13,7 @@ export const projects: Project[] = [
     name: "Fidelity Investments",
     description:
       "Ushering in a new era of secure file transferring as a full-stack engineering intern at Fidelity Investments.",
-    photos: ["/studies/02/01.jpg"],
+    photos: ["/studies/product/01/FidelityCover.jpg"],
     passwordProtected: true,
   },
   {
@@ -21,13 +21,13 @@ export const projects: Project[] = [
     name: "Design at Yale (DAY)",
     description:
       "September 2024 – present. Leading Yale’s design studio and community.",
-    photos: ["/studies/01/01.jpg"], // Using an existing photo
+    photos: ["/studies/product/02/AlternateCover-DAY.jpg"], // Using an existing photo
   },
   {
     id: 3,
     name: "LinkUs",
     description: "A radically new way to browse the web and the world.",
-    photos: ["/studies/01/01.jpg"], // Using an existing photo
+    photos: ["/studies/product/03/Linkus-Cover.jpg"], // Using an existing photo
   },
   {
     id: 4,

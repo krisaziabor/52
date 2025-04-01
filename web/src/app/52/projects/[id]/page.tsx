@@ -28,9 +28,7 @@ const MarkdownImage = ({ alt, src }: { alt?: string; src?: string }) => {
 };
 
 interface ProjectPageProps {
-  params: {
-    id: string
-  };
+  params: Promise<{ id: string }>;
 }
 
 // Get project data by ID from 52 projects
@@ -73,7 +71,8 @@ export async function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({ params }: ProjectPageProps) {
+export async function generateMetadata(props: ProjectPageProps) {
+  const params = await props.params;
   const id = params.id;
   
   const project = await getProjectById(id);
@@ -95,7 +94,10 @@ export async function generateMetadata({ params }: ProjectPageProps) {
   };
 }
 
-export default async function ProjectPage({ params }: ProjectPageProps) {
+import ProjectContentWrapper from '@/app/components/ProjectContentWrapper';
+
+export default async function ProjectPage(props: ProjectPageProps) {
+  const params = await props.params;
   const id = params.id;
   
   const project = await getProjectById(id);
@@ -108,7 +110,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   
   console.log("Project data loaded:", !!projectData);
   
-  return (
+  const content = (
     <div className="relative min-h-screen">
       {/* Progress Bar */}
       <ProgressWrapper />
@@ -285,5 +287,12 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
       </div>
       </div>
     </div>
+  );
+  
+  // Wrap content with the password protection component
+  return (
+    <ProjectContentWrapper project={project}>
+      {content}
+    </ProjectContentWrapper>
   );
 }

@@ -7,7 +7,8 @@ interface VimeoPlayerProps {
 }
 
 const VimeoPlayer: React.FC<VimeoPlayerProps> = ({ vimeoId }) => {
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(true); // Default to playing since video autoplays
+  const [isMuted, setIsMuted] = useState(true); // Default to muted
   const [isPlayerReady, setIsPlayerReady] = useState(false);
   const playerRef = useRef<HTMLIFrameElement>(null);
   const playerContainerRef = useRef<HTMLDivElement>(null);
@@ -31,12 +32,16 @@ const VimeoPlayer: React.FC<VimeoPlayerProps> = ({ vimeoId }) => {
   }, []);
 
   // Post messages to the Vimeo iframe
-  const postMessage = (action: string) => {
+  const postMessage = (action: string, value?: unknown) => {
     if (!playerRef.current || !playerRef.current.contentWindow) return;
     
-    const message = {
+    const message: { method: string; value?: unknown } = {
       method: action
     };
+    
+    if (value !== undefined) {
+      message.value = value;
+    }
     
     playerRef.current.contentWindow.postMessage(JSON.stringify(message), '*');
   };
@@ -54,6 +59,19 @@ const VimeoPlayer: React.FC<VimeoPlayerProps> = ({ vimeoId }) => {
     setIsPlaying(!isPlaying);
   };
 
+  // Handle mute/unmute
+  const toggleMute = () => {
+    if (!isPlayerReady) return;
+    
+    if (isMuted) {
+      postMessage('setVolume', 1.0);
+    } else {
+      postMessage('setVolume', 0);
+    }
+    
+    setIsMuted(!isMuted);
+  };
+
   // Listen for messages from the iframe
   useEffect(() => {
     const handleMessage = (event: MessageEvent) => {
@@ -65,6 +83,9 @@ const VimeoPlayer: React.FC<VimeoPlayerProps> = ({ vimeoId }) => {
           setIsPlaying(true);
         } else if (data.event === 'pause') {
           setIsPlaying(false);
+        } else if (data.event === 'volumechange') {
+          // Volume is between 0 and 1
+          setIsMuted(data.data && data.data.volume === 0);
         }
       } catch {
         // Not a JSON message or not from Vimeo
@@ -77,20 +98,52 @@ const VimeoPlayer: React.FC<VimeoPlayerProps> = ({ vimeoId }) => {
     };
   }, []);
 
+  // Set initial muted state and ensure playback
+  useEffect(() => {
+    if (isPlayerReady) {
+      postMessage('setVolume', 0); // Start muted by default
+      postMessage('play'); // Ensure playback starts
+    }
+  }, [isPlayerReady]);
+
   return (
     <div className="vimeo-player-container my-8 relative" ref={playerContainerRef}>
       <div 
-        className="aspect-w-16 aspect-h-9 w-full overflow-hidden bg-black rounded-lg"
+        className="aspect-w-16 aspect-h-9 w-full overflow-hidden bg-black rounded-lg relative cursor-pointer"
         onClick={togglePlay}
       >
         <iframe
           ref={playerRef}
-          src={`https://player.vimeo.com/video/${vimeoId}?background=1&autoplay=&controls=0&loop=1&transparent=0&dnt=1`}
+          src={`https://player.vimeo.com/video/${vimeoId}?background=1&autoplay=1&controls=0&loop=1&transparent=0&dnt=1`}
           allow="autoplay; fullscreen; picture-in-picture"
           className="w-full h-full pointer-events-none"
           title="Vimeo video player"
         />
-        {/* Removed Play/Pause overlay */}
+        {/* Overlay for better UX when clicking to play/pause */}
+        <div className="absolute inset-0 bg-transparent"></div>
+      </div>
+      
+      {/* Control bar */}
+      <div className="mt-3 flex items-center justify-between">
+        <div className="flex items-center space-x-6">
+          <button 
+            onClick={togglePlay}
+            className="text-sm hover:underline focus:outline-none transition-all font-[family-name:var(--font-diatype-mono)] uppercase tracking-wide"
+            aria-label={isPlaying ? "Pause video" : "Play video"}
+          >
+            {isPlaying ? "Pause" : "Play"}
+          </button>
+          
+          <span className="text-sm text-gray-300 font-[family-name:var(--font-diatype-mono)]">|</span>
+          
+          <button
+            onClick={toggleMute}
+            className="text-sm hover:underline focus:outline-none transition-all font-[family-name:var(--font-diatype-mono)] uppercase tracking-wide"
+            aria-label={isMuted ? "Unmute video" : "Mute video"}
+          >
+            {isMuted ? "Unmute" : "Mute"}
+          </button>
+        </div>
       </div>
     </div>
   );

@@ -3,6 +3,8 @@ id: 1
 title: Full-Stack @ Fidelity
 ---
 
+![Fidelity Investments](/product/01/FidelityCover.jpg)
+
 Software moves slowly at Fidelity. At a company where a reputation of dependency means everything, trusted and established products will always reign supreme over flashy but potentially volatile newcomers. However, the deprecation of once powerful tools brought the company to a point where change in the Managed File Transfer (MFT) space had to be embraced. Coming in with fresh eyes and zero background in MFT software, it was my job to help push Fidelity’s file transferring practices into a new exciting era.
   
 ## A quick note
@@ -48,7 +50,7 @@ Software moves slowly at Fidelity. At a company where a reputation of dependency
 
   After only a week from receiving the feasibility study project, Shash, Jenny, and I looked at each other and knew we wanted to get our hands dirtier. As we were brought in to be full-stack software engineering interns, we craved creating a full-stack project. After attending a few days of office hours, we knew the problem we wanted to solve. We put together a slide deck, requested to meet with our bosses, and proposed our idea: an in-house web client bringing together multiple file protocols under a familiar UI. We knew that Fidelity employees were struggling to familiarize themselves with the nuances of each protocol’s application (SFTP, Ad Hoc, HTTPS, etc) and our coworkers in the MFT team were spending hours on call to support them. Bringing as many as the protocols together under one platform was the central goal. Crucially, by placing these powerful softwares all within an email user experience that is widely familiar, we would elevate the productivity of the company. We used JScape’s API for all the central functionality and utilized a Python Django stack with Tailwind for seamless styling and backend management. By using the Figma handoff features, I was able to dramatically cut down time for our team between the design and implementation stages.
 
-  ![A rough resketch of the mockup created for the Fidelity Client MVP. Centered around a minimalistic and easy-to-use design, the client mimics email for less intuitive protocols like SFTP and AS2](/Fidelity.jpg)
+  ![A rough resketch of the mockup created for the Fidelity Client MVP. Centered around a minimalistic and easy-to-use design, the client mimics email for less intuitive protocols like SFTP and AS2](/product/01/Fidelity.jpg)
   
   Ultimately, we were able to make a full Figma prototype and break ground on the coded MVP. While we would have liked to achieve more with the project, we established a meaningful foundation and left our work in the good hands of the rest our the team.
 

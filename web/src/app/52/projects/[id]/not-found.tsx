@@ -7,7 +7,7 @@ export default function NotFound() {
         Project Not Found
       </h1>
       <p className="text-lg mb-8 text-gray-600 max-w-md">
-        This project may be coming soon or doesn't exist.
+        This project may be coming soon or doesn&apos;t exist.
       </p>
       <Link 
         href="/52" 
