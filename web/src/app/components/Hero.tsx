@@ -43,9 +43,7 @@ export default function Bio() {
         </div>
         <div className="w-full md:w-1/3">
           <p className="pb-4">
-            Kris is a third-year undergraduate at Yale University studying Computer Science and Fine Arts. 
-            Passionate about elevating experiences with thoughtful and accessible design, he leads the college&apos;s 
-            design studio.
+            Product showcases a collection of my proudest work from the past few years, while 52 is a project I started in March to create something design-adjacent every week for a year.
           </p>
           <p>
             I craft these case studies to reflect (yap) and return. Thank you for looking through :)

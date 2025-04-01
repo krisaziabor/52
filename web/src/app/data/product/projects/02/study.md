@@ -1,9 +1,18 @@
 ---
 id: 2
 title: Design at Yale (DAY)
+date: September 2024 – present
+work: Design studio
+discipline: Product design, Product managament, Product research, Full-stack software engineering
+tech stack: Figma, InDesign, React, AWS, Photoshop, Illustrator, TypeScript, PostgreSQL
+team: The DAY Studio
 ---
 
-After I heard of Design at Yale for the first time, I knew it was a group I wanted to be a part of. After a rejected application my second year, I told a good friend from home that I would spend the next two semesters producing enough design work to change my fate. In September 2024, I applied once more and successfully joined the studio. After a semester of leading projects, I now proudly serve as a co-president. The DAY community is by far the most special family I’ve come across at Yale, and I couldn’t be happier to lead it.
+After I heard of Design at Yale for the first time, I knew it was a group I wanted to be a part of. After a rejected application my second year, I told a good friend from home that I would spend the next two semesters producing enough design work to change my fate.
+
+![My rejection email from September 2023. It hit me brutally and had me sad for quite some time.](/product/02/Rejection.png)
+
+In September 2024, I applied once more and successfully joined the studio. After a semester of leading projects, I now proudly serve as a co-president. The DAY community is by far the most special family I’ve come across at Yale, and I couldn’t be happier to lead it.
   
 ## A quick note
 
