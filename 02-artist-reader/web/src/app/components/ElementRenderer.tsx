@@ -4,6 +4,7 @@ import React from 'react';
 import Image from 'next/image';
 import { ScriptElement } from '../context/ScriptContext';
 import VimeoWrapper from './VimeoWrapper';
+import ZoomableImage from './ZoomableImage';
 
 interface ElementRendererProps {
   element: ScriptElement;
@@ -14,7 +15,7 @@ const ElementRenderer: React.FC<ElementRendererProps> = ({ element, className = 
   switch (element.type) {
     case 'text':
       return (
-        <div className={`text-element ${className}`}>
+        <div className={`text-element ${className} text-left`}>
           {element.metadata?.title && (
             <h2 className="text-xl font-bold mb-2">{element.metadata.title}</h2>
           )}
@@ -31,18 +32,10 @@ const ElementRenderer: React.FC<ElementRendererProps> = ({ element, className = 
     case 'image':
       return (
         <figure className={`image-element ${className}`}>
-          <div className="relative w-full aspect-auto">
-            <img
-              src={element.content}
-              alt={element.metadata?.alt || ''}
-              className="w-full h-auto"
-            />
-          </div>
-          {element.metadata?.caption && (
-            <figcaption className="text-sm mt-2 italic text-gray-600">
-              {element.metadata.caption}
-            </figcaption>
-          )}
+          <ZoomableImage
+            src={element.content}
+            alt={element.metadata?.alt || ''}
+          />
         </figure>
       );
       
