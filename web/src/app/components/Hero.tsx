@@ -32,21 +32,31 @@ export default function Bio() {
     <>
       <div className="flex flex-col md:flex-row w-full gap-6 md:gap-8 text-sm sm:text-base text-foreground">
         <div className="w-full md:w-1/3">
-          <p>
-            Any ambition to create a timeless work renders it lifeless.
-          </p>
+          <p>Any ambition to create a timeless work renders it lifeless.</p>
         </div>
         <div className="w-full md:w-1/3">
           <p>
-            Its cycle of mortality and rebirth will always be the most beautiful.
+            Its cycle of mortality and rebirth will always be the most
+            beautiful.
           </p>
         </div>
         <div className="w-full md:w-1/3">
           <p className="pb-4">
-            Product showcases a collection of my proudest work from the past few years, while 52 is a project I started in March to create something design-adjacent every week for a year.
+            Product showcases a collection of my proudest work from the past few
+            years, while 52 is a project I started in March to create something
+            design-adjacent every week for a year.
+          </p>
+          <p className="pb-4">
+            I previously interned at Fidelity Investments and cyclio as a
+            full-stack software engineer.
+          </p>
+          <p className="pb-4">
+            Currently, I design and engineer products for Design at Yale, a
+            studio where I currently serve as co-president.
           </p>
           <p>
-            I craft these case studies to reflect (yap) and return. Thank you for looking through :)
+            I craft these case studies to reflect (yap) and return. Thank you
+            for looking through :)
           </p>
         </div>
       </div>
