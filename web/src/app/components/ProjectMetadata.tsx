@@ -8,7 +8,7 @@ interface ProjectMetadataProps {
 }
 
 const ProjectMetadata: React.FC<ProjectMetadataProps> = ({ metadata, showDate = false }) => {
-  const [showSideMetadata, setShowSideMetadata] = useState(false);
+  const [showSideMetadata, setShowSideMetadata] = useState(true);
   const mainMetadataRef = useRef<HTMLDivElement>(null);
   
   // Process metadata and group values by key
@@ -82,13 +82,12 @@ const ProjectMetadata: React.FC<ProjectMetadataProps> = ({ metadata, showDate = 
   useEffect(() => {
     const handleScroll = () => {
       if (mainMetadataRef.current) {
-        const { top, bottom } = mainMetadataRef.current.getBoundingClientRect();
+        const { top } = mainMetadataRef.current.getBoundingClientRect();
         
-        // Show side metadata when 75% of the main metadata is scrolled out of view
-        // This creates a smoother transition and ensures the side metadata appears
-        // when the user has meaningfully scrolled past the original metadata
-        const triggerPoint = window.innerHeight * 0.25;
-        setShowSideMetadata(top < triggerPoint && bottom < triggerPoint);
+        // Show side metadata when main metadata is not in view
+        // Balanced timing - fade begins when metadata is approaching the viewport
+        const triggerPoint = window.innerHeight * 0.9;
+        setShowSideMetadata(top > triggerPoint);
       }
     };
 

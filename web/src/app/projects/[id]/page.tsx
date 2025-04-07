@@ -155,11 +155,6 @@ export default async function ProjectPage(props: ProjectPageProps) {
             {project.name}
           </h1>
           
-          {/* Display metadata only for product projects */}
-          {projectData.source === 'product' && projectData.frontmatter && (
-            <ProjectMetadata metadata={projectData.frontmatter} showDate={true} />
-          )}
-        
         <div className="prose prose-lg max-w-none">
           <Markdown
             options={{
@@ -295,6 +290,13 @@ export default async function ProjectPage(props: ProjectPageProps) {
             {projectData.content}
           </Markdown>
         </div>
+
+          {/* Display metadata at bottom for product projects */}
+          {projectData.source === 'product' && projectData.frontmatter && (
+            <div className="mt-16 border-t pt-12 border-gray-200">
+              <ProjectMetadata metadata={projectData.frontmatter} showDate={true} />
+            </div>
+          )}
         </div>
       </div>
   );
