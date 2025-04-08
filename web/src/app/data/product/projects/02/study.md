@@ -8,9 +8,9 @@ tech stack: Figma, InDesign, React, AWS, Photoshop, Illustrator, TypeScript, Pos
 team: The DAY Studio
 ---
 
-After I heard of Design at Yale for the first time, I knew it was a group I wanted to be a part of. After a rejected application my second year, I told a good friend from home that I would spend the next two semesters producing enough design work to change my fate.
+After I heard of [Design at Yale](https://www.designatyale.com/) for the first time, I knew it was a group I wanted to be a part of. After a rejected application my second year, I told a good friend from home that I would spend the next two semesters producing enough design work to change my fate.
 
-![My rejection email from September 2023. It hit me brutally and had me sad for quite some time.](/product/02/Rejection.png)
+![My rejection email from September 2023. It hit me brutally and had me sad for quite some time.](/product/02/Rejection-1.png)
 
 In September 2024, I applied once more and successfully joined the studio. After a semester of leading projects, I now proudly serve as a co-president. The DAY community is by far the most special family I’ve come across at Yale, and I couldn’t be happier to lead it.
   
@@ -38,7 +38,9 @@ In September 2024, I applied once more and successfully joined the studio. After
   While I embraced the simplicity and familiarity of iMessage for studio communication, I pushed for the addition of professional product management software.
   [Linear](https://linear.app) is a product I have admired for years, and I was so excited to introduce it to everyone in the studio.
 
-  ![Much better, no?](/product/02/Linear.png)
+  ![Much better, no? Linear's deep functionality allows me to look at the progress of all relevant projects at a quick glance with deeper insights available.](/product/02/Linear-2.png)
+
+  ![It goes beyond just higher-level documentation and planning. The nitty gritty tasks can be delegated and tracked within the software as well.](/product/02/Linear-1.png)
 
   By establishing a system where project leads can delegate tasks and all members can document developements in one space, my co-pres [Aditya](https://adityadas.design) and I have easily tracked progress and cut at least ten minutes of status update chats from the weekly studio meetings.
 
@@ -113,8 +115,6 @@ In September 2024, I applied once more and successfully joined the studio. After
   ![DAY BOOK launch event](/product/02/DAYEVENT.jpg)
 
   *As projects are still under studio review or are in progress, full case studies for each project will be released this summer. Talk to you soon :)
-  
-  Visit the DAY website [here](https://www.designatyale.com/).
   
 ## Questions/notes for myself
   
