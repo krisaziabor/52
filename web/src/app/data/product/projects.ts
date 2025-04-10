@@ -32,7 +32,7 @@ export const projects: Project[] = [
   {
     id: 4,
     name: "cyclio: a retrospective",
-    description: "cyclio attempted to revolutionize menstrual health with acupressure and yoga. While it's chapter closed last year, I want to reflecting on my beautiful Berlin summer interning there & revamp the app interfaces to create the most frictionless experience for users.",
+    description: "cyclio attempted to revolutionize menstrual health with acupressure and yoga. While the startup's chapter came to an end last year, I want to reflect on & return to my past internship work & revamp the app interfaces to create the most frictionless and welcoming experience.",
     photos: ["/studies/01/01.jpg"], // Using an existing photo
     comingSoon: true,
   }
