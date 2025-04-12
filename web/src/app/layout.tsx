@@ -52,10 +52,10 @@ const diatypemonomedium = localFont({
 
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://krisaziabor.com'),
-  title: "Kris Aziabor Loves Design",
+  metadataBase: new URL('https://product.krisaziabor.com'),
+  title: "Kris Aziabor | Product",
   description:
-    "Product design portfolio and 52-week project case studies.",
+    "A showcase of Kris Aziabor's product work.",
   icons: {
     icon: "icon.ico",
     apple: "/preview.jpg",
@@ -63,10 +63,10 @@ export const metadata: Metadata = {
 
   // This is where you can add your Open Graph details:
   openGraph: {
-    title: "Kris Aziabor Loves Design",
+    title: "Kris Aziabor | Product",
     description:
     "Product design portfolio and 52-week project case studies.",
-    url: "https://krisaziabor.com",
+    url: "https://product.krisaziabor.com",
     siteName: "Kris Aziabor",
     images: [
       {
@@ -82,9 +82,9 @@ export const metadata: Metadata = {
   // And here are Twitter-specific tags (many platforms also read them):
   twitter: {
     card: "summary_large_image",
-    title: "Kris Aziabor Loves Design",
+    title: "Kris Aziabor | Product",
     description:
-      "Product design portfolio and 52-week project case studies.",
+      "A showcase of Kris Aziabor's product work.",
     images: ["/preview.jpg"],
   },
 };
