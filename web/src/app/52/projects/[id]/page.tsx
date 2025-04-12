@@ -6,7 +6,6 @@ import Markdown from 'markdown-to-jsx';
 import { Project } from '../../../data/projects';
 import { projects as fiftyTwoProjects } from '../../../data/52/projects';
 import { InlineCode } from '@/app/components/CodeBlock';
-import Link from 'next/link';
 import ZoomableImage from '@/app/components/ZoomableImage';
 import ClientTOC from '@/app/components/ClientTOC';
 import ProgressWrapper from '@/app/components/ProgressWrapper';
