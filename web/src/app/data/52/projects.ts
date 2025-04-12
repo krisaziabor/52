@@ -19,15 +19,15 @@ export const projects: Project[] = [
     id: 2,
     name: "Introducing Product & 52",
     description:
-      "Can I build a site in only a weekend? Testing the trend of vibe coding while focusing on my product sense to create the best case study website.",
+      "Testing the trend of vibe coding while focusing on my product sense to create the best case study website.",
     photos: ["/studies/02/01.jpg"],
     comingSoon: true,
   },
   {
     id: 3,
-    name: "Artist Readers",
+    name: "Junior Seminar",
     description:
-      "A project for my Junior Seminar, where I make a collection of inspirations. I am loving this run of constantly making websites, and I am taking the project to the web as well as producing a physical text.",
+      "Crafting a homemade font, website, and visual identity for my junior seminar's exhibition.",
     photos: ["/studies/03/01.jpg"],
     comingSoon: true,
   },

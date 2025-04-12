@@ -115,36 +115,12 @@ export default async function ProjectPage(props: ProjectPageProps) {
       {/* Progress Bar */}
       <ProgressWrapper />
       
-      {/* Back button on the far left - sticky */}
-      <div className="fixed left-8 top-24 hidden lg:block z-10">
-        <Link 
-          href="/52" 
-          className="text-gray-400 hover:text-gray-700 transition-colors duration-200 flex items-center group"
-        >
-          <span className="text-xl inline-block mr-2 transform group-hover:-translate-x-1 transition-transform duration-200 font-[family-name:var(--font-diatype-mono)]">←</span>
-          <span className="font-[family-name:var(--font-glare)] text-sm">
-            {parseInt(project.id.toString()) < 10 ? `0${project.id}` : project.id}
-          </span>
-        </Link>
-      </div>
       
       {/* Table of Contents */}
       <ClientTOC projectId={project.id} />
       
       {/* Main content with left-aligned text */}
       <div className="container mx-auto px-4 py-8 md:py-16 max-w-3xl">
-        {/* Mobile back button (only visible on small/medium screens) */}
-        <div className="mb-6 lg:hidden">
-          <Link 
-            href="/52" 
-            className="text-gray-500 hover:text-gray-700 transition-colors duration-200 flex items-center group"
-          >
-            <span className="inline-block mr-2 transform group-hover:-translate-x-1 transition-transform duration-200 font-[family-name:var(--font-diatype-mono)]">←</span>
-            <span className="font-[family-name:var(--font-glare)]">
-              {parseInt(project.id.toString()) < 10 ? `0${project.id}` : project.id}
-            </span>
-          </Link>
-        </div>
         
         <h1 className="text-4xl md:text-5xl font-[family-name:var(--font-glare)] mb-8">
           {project.name}
