@@ -1,7 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import React from "react";
+import Link from "next/link";
+import Image from "next/image";
 import { useContent } from "../context/ContentContext";
 
 export default function Bio() {
@@ -40,15 +41,31 @@ export default function Bio() {
     <>
       <div className="flex flex-col md:flex-row w-full gap-6 md:gap-8 text-sm sm:text-base text-foreground justify-between">
         <div className="w-full">
-          <p className="pb-4">
-            Kris designs. He codes. He manages a studio too.
+          <p className="pb-2">
+            Kris designs. He codes. He runs a studio too.
           </p>
-          <p className="pb-4">
-            Ex-software (full-stack engineering) @ Fidelity Investments &
-            cyclio.
+          <p className="pb-2">
+            Ex-software (full-stack) @ 
+            <Link 
+              href="https://fidelity.com" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="hover:underline mx-1"
+            >
+              Fidelity Investments
+            </Link>
+            &
+            <Link 
+              href="https://cyclio.webflow.io/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="hover:underline ml-1"
+            >
+              cyclio
+            </Link>.
           </p>
-          <p className="pb-4">
-            Current co-president for Yale&apos;s design studio (DAY).
+          <p className="pb-2">
+            Currently leading Design at Yale.
           </p>
         </div>
       </div>

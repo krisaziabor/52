@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import Footer from "../footer";
 import { ContentProvider } from "../context/ContentContext";
+import Navbar from "../components/Navbar";
 
 export const metadata: Metadata = {
   title: "Case Studies | Kris Aziabor",
@@ -15,8 +15,10 @@ export default function ProjectsLayout({
   return (
     <ContentProvider>
       <div className="min-h-screen">
+        <div className="px-4 pt-8 sm:px-8 lg:px-20">
+          <Navbar />
+        </div>
         {children}
-        <Footer />
       </div>
     </ContentProvider>
   );

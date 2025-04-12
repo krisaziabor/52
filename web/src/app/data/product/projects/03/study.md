@@ -30,7 +30,7 @@ Our favorite platforms that tailor content to us deepen our individualism, and t
   
   ![Especially within the realms of lyrically-dense or content-heavy pieces of media, it is easy to look past certain nuances. At the same time, any somewhat reasonable connection can spread like wildfire (even if grossly inaccurate). Love Kendrick but he surely did not have every of these meanings attached to just the name of the song...](/product/03/1-Linkus.jpg)
 
-  The internet has made us more individualized and less in tune with things that don’t center us. Cyberethnographer Ruby Thelot [talks about the concept of appauvrissement](https://www.instagram.com/reel/DCZQyBbRY_z/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==), the idea that culture becomes poorer due to the lack of cultivation of the audience. 
+  The internet has made us more individualized and less in tune with things that don’t center us. Cyberethnographer Ruby Thelot [talks about the concept of appauvrissement](https://www.instagram.com/reel/DCZQyBbRY_z/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==), the idea that culture becomes poorer due to the lack of cultivation of the audience.
   
   <VimeoPlayer id="1063743981">
   

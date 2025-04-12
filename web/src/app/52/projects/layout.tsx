@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Footer from "../../footer";
+import Navbar from "../../components/Navbar";
 
 export const metadata: Metadata = {
   title: "52 | Kris Aziabor",
@@ -13,8 +13,10 @@ export default function ProjectsLayout({
 }>) {
   return (
     <div className="min-h-screen">
+      <div className="px-4 pt-8 sm:px-8 lg:px-20">
+        <Navbar />
+      </div>
       {children}
-      <Footer />
     </div>
   );
 }

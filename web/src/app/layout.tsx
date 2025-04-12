@@ -44,6 +44,13 @@ const diatypemono = localFont({
   weight: "400",
 });
 
+const diatypemonomedium = localFont({
+  src: "../../fonts/ABCDiatypeMonoEdu-Medium.otf",
+  variable: "--font-diatype-mono-medium",
+  weight: "500",
+});
+
+
 export const metadata: Metadata = {
   metadataBase: new URL('https://krisaziabor.com'),
   title: "Kris Aziabor Loves Design",
@@ -90,7 +97,7 @@ export default function RootLayout({
   return (
     <html lang="en">
        <body
-        className={`${semidiatype.variable} ${diatypemono.variable} ${glare.variable} ${boldsemidiatype.variable} ${boldfragment.variable} ${fragmentsans.variable} ${italicfragmentsans.variable} antialiased`}
+        className={`${semidiatype.variable} ${diatypemonomedium.variable} ${diatypemono.variable} ${glare.variable} ${boldsemidiatype.variable} ${boldfragment.variable} ${fragmentsans.variable} ${italicfragmentsans.variable} antialiased`}
       >
         {children}
       </body>

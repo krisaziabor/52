@@ -160,7 +160,7 @@ const ProjectMetadata: React.FC<ProjectMetadataProps> = ({ metadata, showDate = 
 
       {/* Side metadata (right side when scrolled) */}
       <div 
-        className={`fixed right-8 top-24 hidden xl:block z-20 w-64 p-5 border-l border-gray-200 bg-white/80
+        className={`fixed right-4 sm:right-8 lg:right-20 top-36 hidden xl:block z-20 w-48 2xl:w-56 p-5 border-l border-gray-100 bg-white/80
                   transition-all duration-300 transform ${showSideMetadata ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8 pointer-events-none'}`}
       >
         <div className="text-xs grid grid-cols-1 gap-y-4 max-h-[80vh] overflow-y-auto pr-2">

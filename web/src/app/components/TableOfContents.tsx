@@ -72,7 +72,7 @@ const TableOfContents: React.FC<TableOfContentsProps> = () => {
   }
 
   return (
-    <div className="fixed left-8 top-48 hidden lg:block overflow-y-auto max-h-[60vh] z-10 w-56 lg:pr-8 xl:pr-4">
+    <div className="fixed left-4 sm:left-8 lg:left-20 top-48 hidden lg:block overflow-y-auto max-h-[60vh] z-10 w-56 lg:pr-8 xl:pr-4">
       <nav className="toc text-xs font-[family-name:var(--font-fragment-sans)]" aria-label="Table of contents">
         <ul className="space-y-1 text-gray-500">
           {headings.map(heading => (
