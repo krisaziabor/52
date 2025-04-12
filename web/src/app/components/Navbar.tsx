@@ -83,7 +83,7 @@ export default function Navbar() {
             LinkedIn
           </a>
           <a
-            href="/cv.pdf"
+            href="/KAKAProductResume.pdf"
             className="font-[family-name:var(--font-diatype-mono)] uppercase text-sm"
             target="_blank"
             rel="noopener noreferrer"
