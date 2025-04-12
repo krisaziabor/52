@@ -41,31 +41,39 @@ export default function Bio() {
     <>
       <div className="flex flex-col md:flex-row w-full gap-6 md:gap-8 text-sm sm:text-base text-foreground justify-between">
         <div className="w-full">
+          <p className="pb-2">Kris designs. He codes. He runs a studio too.</p>
           <p className="pb-2">
-            Kris designs. He codes. He runs a studio too.
-          </p>
-          <p className="pb-2">
-            Ex-software (full-stack) @ 
-            <Link 
-              href="https://fidelity.com" 
-              target="_blank" 
+            Ex-software (full-stack) @
+            <Link
+              href="https://fidelity.com"
+              target="_blank"
               rel="noopener noreferrer"
               className="hover:underline mx-1"
             >
               Fidelity Investments
             </Link>
             &
-            <Link 
-              href="https://cyclio.webflow.io/" 
-              target="_blank" 
+            <Link
+              href="https://cyclio.webflow.io/"
+              target="_blank"
               rel="noopener noreferrer"
               className="hover:underline ml-1"
             >
               cyclio
-            </Link>.
+            </Link>
+            .
           </p>
           <p className="pb-2">
-            Currently leading Design at Yale.
+            Currently leading
+            <Link
+              href="https://designatyale.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:underline ml-1"
+            >
+              Design at Yale
+            </Link>
+            .
           </p>
         </div>
       </div>
