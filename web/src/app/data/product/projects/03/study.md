@@ -8,7 +8,7 @@ tech stack: Figma
 team: Me
 special thanks: Zack Hauptman, Alvin Ashiatey, Theo Haggins
 ---
-![Welcome to LinkUs](/product/03/Linkus-Cover.jpg)
+![The question central to Linkus:](/product/03/Lede.jpg)
 
 Delusion has never been more popular, and media literacy is at an all time low.
 
@@ -25,8 +25,6 @@ Our favorite platforms that tailor content to us deepen our individualism, and t
   With Xanadu Space, software doesn't just mirror the paper text experience; it enhances it. Parallelism, deep links, and the origin of content all are placed to the forefront.
 
   <VimeoPlayer id="1074996443">
-
-  ![The question central to all this work](/product/03/Lede.jpg)
 
 ### Appauvrissement & our era of digital delusion
 
