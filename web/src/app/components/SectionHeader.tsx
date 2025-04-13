@@ -30,7 +30,7 @@ export default function SectionHeader() {
         </div>
       ) : (
         <div className="flex items-center">
-          <span>SELECTED PROJECTS</span>
+          <span>SELECTED CASE STUDIES</span>
           <svg 
             xmlns="http://www.w3.org/2000/svg" 
             width="16" 
