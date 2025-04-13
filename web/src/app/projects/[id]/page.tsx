@@ -11,6 +11,8 @@ import ClientTOC from '@/app/components/ClientTOC';
 import ProgressWrapper from '@/app/components/ProgressWrapper';
 import VimeoWrapper from '@/app/components/VimeoWrapper';
 import ProjectMetadata from '@/app/components/ProjectMetadata';
+import Footer from '@/app/footer';
+import ProjectContentWrapper from '@/app/components/ProjectContentWrapper';
 
 // Custom Markdown components
 const MarkdownImage = ({ alt, src }: { alt?: string; src?: string }) => {
@@ -95,8 +97,6 @@ export async function generateMetadata(props: ProjectPageProps) {
     },
   };
 }
-
-import ProjectContentWrapper from '@/app/components/ProjectContentWrapper';
 
 export default async function ProjectPage(props: ProjectPageProps) {
   // Await params before accessing properties
@@ -301,6 +301,11 @@ export default async function ProjectPage(props: ProjectPageProps) {
               <ProjectMetadata metadata={projectData.frontmatter} showDate={true} />
             </div>
           )}
+        </div>
+        
+        {/* Footer */}
+        <div className="container mx-auto px-4 max-w-3xl">
+          <Footer />
         </div>
       </div>
   );

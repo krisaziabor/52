@@ -1,38 +1,40 @@
-import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
 export default function Footer() {
   return (
-    <footer className="col-span-2 row-span-1 flex gap-[24px] flex-wrap items-center justify-center pb-8">
-      <Link
-        href="/"
-        passHref
-        className="flex items-center gap-2 hover:underline hover:underline-offset-4 font-[family-name:var(--font-glare)]"
+    <footer className="flex flex-wrap justify-between items-center w-full py-6 sm:py-8 border-t border-gray-200">
+      <Link 
+        href="/" 
+        className="font-[family-name:var(--font-diatype-mono)] text-xs sm:text-sm hover:underline hover:underline-offset-4"
       >
-        <Image
-          aria-hidden
-          src="/52-logo.svg"
-          alt="52 icon"
-          width={16}
-          height={16}
-        />
-        Home
+        KRIS ATTEH KOJO AZIABOR
       </Link>
-      <Link
-        href="https://krisaziabor.com"
-        passHref
-        className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-      >
-        <Image
-          aria-hidden
-          src="/KAKA-logo.svg"
-          alt="KAKA icon"
-          width={16}
-          height={16}
-        />
-        <span className="font-[family-name:var(--font-glare)]">Kris Aziabor Dot Com </span>
-      </Link>
+      <div className="flex items-center gap-6 sm:gap-12 mt-2 sm:mt-0">
+        <Link 
+          href="#"
+          className="flex items-center gap-1 text-xs sm:text-sm font-[family-name:var(--font-diatype-mono)] hover:underline hover:underline-offset-4"
+        >
+          Back to top 
+          <svg 
+            xmlns="http://www.w3.org/2000/svg" 
+            width="12" 
+            height="12" 
+            viewBox="0 0 24 24" 
+            fill="none" 
+            stroke="currentColor" 
+            strokeWidth="2" 
+            strokeLinecap="round" 
+            strokeLinejoin="round"
+            className="sm:w-3.5 sm:h-3.5"
+          >
+            <path d="m18 15-6-6-6 6"/>
+          </svg>
+        </Link>
+        <div className="text-xs sm:text-sm font-[family-name:var(--font-diatype-mono)]">
+          © KAKA Studios 2025
+        </div>
+      </div>
     </footer>
   );
 }
