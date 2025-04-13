@@ -59,7 +59,7 @@ export default function Navbar() {
 
         <div className="flex items-center space-x-6">
           <a
-            href="mailto:kris@krisaziabor.com"
+            href="mailto:hello@krisaziabor.com"
             className="font-[family-name:var(--font-diatype-mono)] uppercase text-sm"
             target="_blank"
             rel="noopener noreferrer"
@@ -168,7 +168,7 @@ export default function Navbar() {
 
               <div className="mt-4 flex flex-col space-y-2">
                 <a
-                  href="mailto:kris@krisaziabor.com"
+                  href="mailto:hello@krisaziabor.com"
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => setIsMenuOpen(false)}
