@@ -9,8 +9,9 @@ interface VimeoPlayerProps {
 }
 
 const VimeoPlayer: React.FC<VimeoPlayerProps> = ({ vimeoId, play, mute }) => {
-  const [isPlaying, setIsPlaying] = useState(true); // Default to playing since video autoplays
+  const [isPlaying, setIsPlaying] = useState(false); // Default to not playing until visible
   const [isMuted, setIsMuted] = useState(true); // Default to muted
+  const [isVisible, setIsVisible] = useState(false);
   const showPlayButton = play !== "disabled";
   const showMuteButton = mute !== "disabled";
   const [isPlayerReady, setIsPlayerReady] = useState(false);
@@ -28,10 +29,21 @@ const VimeoPlayer: React.FC<VimeoPlayerProps> = ({ vimeoId, play, mute }) => {
     };
     document.body.appendChild(script);
 
+    // Attempt to pause any videos immediately, even before API loads
+    const initialPauseTimeout = setTimeout(() => {
+      if (playerRef.current && playerRef.current.contentWindow) {
+        playerRef.current.contentWindow.postMessage(
+          JSON.stringify({ method: 'pause' }), 
+          '*'
+        );
+      }
+    }, 100);
+
     return () => {
       if (script.parentNode) {
         script.parentNode.removeChild(script);
       }
+      clearTimeout(initialPauseTimeout);
     };
   }, []);
 
@@ -112,20 +124,50 @@ const VimeoPlayer: React.FC<VimeoPlayerProps> = ({ vimeoId, play, mute }) => {
     };
   }, []);
 
-  // Set initial muted state and ensure playback
+  // Set initial muted state and ensure video is paused on load
   useEffect(() => {
     if (isPlayerReady) {
       postMessage('setVolume', 0); // Start muted by default
-      postMessage('play'); // Ensure playback starts
-      
-      // Add a small delay to ensure playback initiates even if the player isn't fully ready
-      const playTimeout = setTimeout(() => {
-        postMessage('play');
-      }, 500);
-      
-      return () => clearTimeout(playTimeout);
+      postMessage('pause'); // Ensure video starts paused
     }
   }, [isPlayerReady]);
+  
+  // Setup intersection observer to detect when video is visible
+  useEffect(() => {
+    if (!playerContainerRef.current) return;
+    
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const [entry] = entries;
+        setIsVisible(entry.isIntersecting);
+      },
+      { 
+        threshold: 0.6,  // Trigger when 60% of the video is visible
+        rootMargin: "-10% 0px" // Adds a margin to further delay activation
+      }
+    );
+    
+    observer.observe(playerContainerRef.current);
+    
+    return () => {
+      if (playerContainerRef.current) {
+        observer.unobserve(playerContainerRef.current);
+      }
+    };
+  }, []);
+  
+  // Control video playback based on visibility
+  useEffect(() => {
+    if (!isPlayerReady) return;
+    
+    if (isVisible) {
+      postMessage('play');
+      setIsPlaying(true);
+    } else {
+      postMessage('pause');
+      setIsPlaying(false);
+    }
+  }, [isVisible, isPlayerReady]);
 
   return (
     <div className="vimeo-player-container my-8 relative" ref={playerContainerRef}>
@@ -135,7 +177,7 @@ const VimeoPlayer: React.FC<VimeoPlayerProps> = ({ vimeoId, play, mute }) => {
       >
         <iframe
           ref={playerRef}
-          src={`https://player.vimeo.com/video/${vimeoId}?background=1&autoplay=1&autopause=0&controls=0&loop=1&transparent=0&dnt=1&muted=1`}
+          src={`https://player.vimeo.com/video/${vimeoId}?background=1&autoplay=0&autopause=0&controls=0&loop=1&transparent=0&dnt=1&muted=1`}
           allow="autoplay; fullscreen; picture-in-picture; encrypted-media"
           className="w-full h-full pointer-events-none"
           title="Vimeo video player"
