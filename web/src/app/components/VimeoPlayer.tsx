@@ -4,11 +4,15 @@ import React, { useState, useRef, useEffect } from 'react';
 
 interface VimeoPlayerProps {
   vimeoId: string;
+  play?: string;
+  mute?: string;
 }
 
-const VimeoPlayer: React.FC<VimeoPlayerProps> = ({ vimeoId }) => {
+const VimeoPlayer: React.FC<VimeoPlayerProps> = ({ vimeoId, play, mute }) => {
   const [isPlaying, setIsPlaying] = useState(true); // Default to playing since video autoplays
   const [isMuted, setIsMuted] = useState(true); // Default to muted
+  const showPlayButton = play !== "disabled";
+  const showMuteButton = mute !== "disabled";
   const [isPlayerReady, setIsPlayerReady] = useState(false);
   const playerRef = useRef<HTMLIFrameElement>(null);
   const playerContainerRef = useRef<HTMLDivElement>(null);
@@ -57,6 +61,16 @@ const VimeoPlayer: React.FC<VimeoPlayerProps> = ({ vimeoId }) => {
     }
     
     setIsPlaying(!isPlaying);
+  };
+
+  // Handle restart
+  const restartVideo = () => {
+    if (!isPlayerReady) return;
+    postMessage('setCurrentTime', 0);
+    if (!isPlaying) {
+      postMessage('play');
+      setIsPlaying(true);
+    }
   };
 
   // Handle mute/unmute
@@ -133,24 +147,37 @@ const VimeoPlayer: React.FC<VimeoPlayerProps> = ({ vimeoId }) => {
       {/* Control bar */}
       <div className="mt-3 flex items-center justify-between">
         <div className="flex items-center space-x-6">
-          <button 
-            onClick={togglePlay}
-            className="text-sm hover:underline focus:outline-none transition-all font-[family-name:var(--font-diatype-mono)] uppercase tracking-wide"
-            aria-label={isPlaying ? "Pause video" : "Play video"}
-          >
-            {isPlaying ? "Pause" : "Play"}
-          </button>
+          {showPlayButton && (
+            <button 
+              onClick={togglePlay}
+              className="text-sm hover:underline focus:outline-none transition-all font-[family-name:var(--font-diatype-mono)] uppercase tracking-wide"
+              aria-label={isPlaying ? "Pause video" : "Play video"}
+            >
+              {isPlaying ? "Pause" : "Play"}
+            </button>
+          )}
           
-          <span className="text-sm text-gray-300 font-[family-name:var(--font-diatype-mono)]">|</span>
+          {showPlayButton && showMuteButton && (
+            <span className="text-sm text-gray-300 font-[family-name:var(--font-diatype-mono)]">|</span>
+          )}
           
-          <button
-            onClick={toggleMute}
-            className="text-sm hover:underline focus:outline-none transition-all font-[family-name:var(--font-diatype-mono)] uppercase tracking-wide"
-            aria-label={isMuted ? "Unmute video" : "Mute video"}
-          >
-            {isMuted ? "Unmute" : "Mute"}
-          </button>
+          {showMuteButton && (
+            <button
+              onClick={toggleMute}
+              className="text-sm hover:underline focus:outline-none transition-all font-[family-name:var(--font-diatype-mono)] uppercase tracking-wide"
+              aria-label={isMuted ? "Unmute video" : "Mute video"}
+            >
+              {isMuted ? "Unmute" : "Mute"}
+            </button>
+          )}
         </div>
+        <button
+          onClick={restartVideo}
+          className="text-sm hover:underline focus:outline-none transition-all font-[family-name:var(--font-diatype-mono)] uppercase tracking-wide"
+          aria-label="Restart video"
+        >
+          Restart
+        </button>
       </div>
     </div>
   );

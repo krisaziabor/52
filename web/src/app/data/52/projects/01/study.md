@@ -3,13 +3,13 @@ id: 1
 title: Spotify, play next
 ---
 
-<VimeoPlayer id="1068514656">
-
 Picture this: you are working in your bed and dive deep into a nostalgia kick, starting to listen to 2010s pop hits. While Troye Sivan's "Happy Little Pill" (a really deep cut I just rediscovered) is playing, you remember another of his early hits – "YOUTH." What an absolute classic song! You just have to play it. You already have a queue of other once-forgotten records, but of course, you want "YOUTH" to be the next song that plays. You also want to maintain the queue you have. What do you do?
 
-Well, if you use Spotify, chances are you have to stop "Happy Little Pill" prematurely and press on "YOUTH" before the top song in your queue plays, and you are forced to go back and add it once more. Alternatively, you can stop what you are doing, enter the app, add the song to your queue, and drag it to the top (see video above). It doesn't just seem like a hassle; it is one.
+Well, if you use Spotify, chances are you have to stop "Happy Little Pill" prematurely and press on "YOUTH" before the top song in your queue plays, and you are forced to go back and add it once more. Alternatively, you can stop what you are doing, enter the app, add the song to your queue, and drag it to the top. It doesn't just seem like a hassle; it is one.
 
 ## Problem
+
+<VimeoPlayer id="1068514656">
 
 As a former Spotify user and now an Apple Music convert, I realize that Apple's designers and developers have solved this debacle quite seamlessly.
 

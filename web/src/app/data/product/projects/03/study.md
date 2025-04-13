@@ -1,16 +1,16 @@
 ---
 id: 3
 title: Linkus
-work: Coursework (Interactive Design and the Internet)
-date: Fall 2024
+work: Coursework
+date: Fall 2024 – present
 discipline: Product design, Product research
 tech stack: Figma
 team: Me
 special thanks: Zack Hauptman, Alvin Ashiatey, Theo Haggins
 ---
-![Mockups of the Linkus interface](/product/03/Linkus.jpg)
+![Welcome to LinkUs](/product/03/1-DemoLinkus.jpg)
 
-Delusion has never been more popular.
+Delusion has never been more popular, and media literacy is at an all time low.
 
 Our favorite platforms that tailor content to us deepen our individualism, and the loss of the third space has only worsened the blow. And finally, media literacy is at a shocking low. Major players amongst Internet spaces – from Google to TikTok – will prioritize profit above all else, leaving collective memory, experience, and knowledge in the bleak foreground. Designed to bring shared knowledge and memory to the forefront, Linkus is a radically new way to browse the web and the world.
 
@@ -24,17 +24,19 @@ Our favorite platforms that tailor content to us deepen our individualism, and t
 
   With Xanadu Space, software doesn't just mirror the paper text experience; it enhances it. Parallelism, deep links, and the origin of content all are placed to the forefront.
 
+  <VimeoPlayer id="1074996443">
+
 ### Appauvrissement & our era of digital delusion
 
   I want to place the central design frameworks of Linkus (parallelism, deep links, origin of content) alongside the current climate of media literacy and individualism.
   
   ![Especially within the realms of lyrically-dense or content-heavy pieces of media, it is easy to look past certain nuances. At the same time, any somewhat reasonable connection can spread like wildfire (even if grossly inaccurate). Love Kendrick but he surely did not have every of these meanings attached to just the name of the song...](/product/03/1-Linkus.jpg)
 
-  The internet has made us more individualized and less in tune with things that don’t center us. Cyberethnographer Ruby Thelot [talks about the concept of appauvrissement](https://www.instagram.com/reel/DCZQyBbRY_z/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==), the idea that culture becomes poorer due to the lack of cultivation of the audience.
+  The internet has made us more individualized and less in tune with things that don’t center us. Cyberethnographer Ruby Thelot talks about the concept of appauvrissement, the idea that culture becomes poorer due to the lack of cultivation of the audience.
   
   <VimeoPlayer id="1063743981">
   
-  Now, Ruby was speaking in regards to the broligarchy who leaves school ready to sink their teeth into high-paying engineering jobs while having no aesthetic ideals or understanding of art history.
+  Now, Ruby was speaking in regards to the "broligarchy" who leaves school ready to sink their teeth into high-paying engineering jobs while having no aesthetic ideals or understanding of art history.
 
   I want to extend his concept into a different realm. Ultra-prevalent products like TikTok and Instagram have tailored our user experiences around content they believe we will like, and we become more deeply rooted as individuals because of it. We firmly believe we are the center of the universe because of the products that tell us so. This is tragic for communities and for us as a collective. It is much harder for people to come to common ground, have empathy, or even enjoy media and art because there is a perpetual craving to be the ideal consumer.
   
@@ -54,18 +56,24 @@ Our favorite platforms that tailor content to us deepen our individualism, and t
   
   ![On the bottom of any song's page, there is an extensive list of credits and a index of works linked through interpolation, sampling, etc.](/product/03/16-Linkus.jpg)
 
-  However, it is bound by text and cannot be easily consumed. How do we add a visual component to increase ease of access?
+  For very curious consumers, Genius provides a way to see how extensive the connections are between two pieces of music (artists, albums, songs, even solitary sounds). However, it is bound by text and requires so much intention and focus to be an enjoyable experience.
+
+  <VimeoPlayer id="1074973816">
+
+  ![These are both correct assumptions and mental maps of the Genius annotations, but which one gives more insight? Having all analysis and connecting work bound by text leaves the viewer potentially without valuable understanding.](/product/03/17-Linkus.jpg)
+
+  How do we add a visual component to increase accessibility and ease of use?
 
 ### Obsidian
   
   The main design inspiration for this intial prototype was Obsidian, my favorite note-taking application.
   Not simply bound by text, the app employs the frameworks Ted Nelson emphasized. You can use deeplinks that work in multiple directions to form powerful relationships, have texts side by side, and with a visual web, understand where a specific piece of content originates from.
   
-  ![The web from afar. The developers made a conscious choice to remove all textual elements when so many nodes are present](/product/03/1-Obsidian.jpg)
+  <VimeoPlayer id="1074984667">
 
-  ![When you zoom in a little, you can begin to see the names of each node](/product/03/2-Obsidian.jpg)
+  The web from afar: the developers made a conscious choice to remove all textual elements when so many nodes are present. However, when you zoom in a little, you begin to see the names of each node.
 
-### Expansion on current/mainstream archives
+### Mini slide deck
 
   ![From Software for People presentation (Nov 2024)](/product/03/4-Linkus.jpg)
 
@@ -102,7 +110,7 @@ Our favorite platforms that tailor content to us deepen our individualism, and t
   Especially when you consider that Google is pushing AI responses into search experience (and establishing it as the default), LinkUs seems out of place. It doesn’t seem like a logical feature to add to Google's experience when they are trying to sell ad space and push ecommerce.
   That isn’t to say that LinkUs has no viability at all. That could not be farther from true. This clash just suggests that it deserves to be an individual entity, not a browser extension or supplement to any existing web infrastructure.
 
-  ![The amazing Donald Judd Library site](/product/03/14-Linkus.jpg)
+  <VimeoPlayer id="1074991986">
   
   As I look forward and begin to think about adopting a completely new visual identity for the project, I think about the [Donald Judd Library](https://library.juddfoundation.org/).
   The website serves as a digital archive but the design is rooted in the layout of the physical library.
@@ -124,3 +132,6 @@ Our favorite platforms that tailor content to us deepen our individualism, and t
   Users will gravitate to the first connection or piece of media they encounter on the site. How do I determine what is pushed to the forefront and what is not?
   
   From [Alvin](https://alvinashiatey.com/): Look at physical or non-web institutions that serve the same functions/ethos as this project. Maybe your design language will adopt elements from there...
+
+  From [Cece](https://cecexie.com/): How can you bring in the principles and core themes from our Intellectual Property and the Internet class into a version of the site? Can you bring information on copyright, fair use, and legal analysis while keeping the experience as minimal as needed?
+  

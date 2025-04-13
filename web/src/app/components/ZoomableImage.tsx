@@ -37,7 +37,7 @@ const ZoomableImage: React.FC<ZoomableImageProps> = ({ src, alt }) => {
           onClick={toggleModal}
         />
       </div>
-      {alt && <p className="text-sm text-gray-500 mt-2">{alt}</p>}
+      {alt && <p className="text-sm text-gray-500 mt-2 text-center">{alt}</p>}
       
       <ImageModal
         src={src}
