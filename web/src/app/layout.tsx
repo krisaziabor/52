@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next";
+
 
 const semidiatype = localFont({
   src: "../../fonts/ABCDiatypeSemi-MonoEdu-Regular.otf",
@@ -100,6 +102,7 @@ export default function RootLayout({
         className={`${semidiatype.variable} ${diatypemonomedium.variable} ${diatypemono.variable} ${glare.variable} ${boldsemidiatype.variable} ${boldfragment.variable} ${fragmentsans.variable} ${italicfragmentsans.variable} antialiased`}
       >
         {children}
+        <Analytics />
       </body>
     </html>
   );
