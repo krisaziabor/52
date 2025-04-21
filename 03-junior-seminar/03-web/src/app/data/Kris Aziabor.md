@@ -2,8 +2,9 @@
 
 ## 01
 
-The camera – my main mode of art making – is my machine of reflection and placing mental & physical places in the past. This is not the same as marking them as complete or finished; I always find myself returning to these homes of thought and experience eventually. Institutional memory and its destruction – whether through explicit or surreptitious means – has always fascinated me and photography allows me to explore what types of experiences and creations belonging to me will be known to others after I leave places. Will my almost twenty years in my hometown of Atkinson, New Hampshire – where the black population is recorded as 0.0% be tattooed on the town’s body when I depart for the last time? Will my future photographs that encapsulate tensions and traditions encapsulating my view of Yale’s community belong in any archive  
-across this campus? Will my thoughts and I – for my ugliness and beauty – be remembered?
+The camera – my main mode of art making – is my machine of reflection and placing mental & physical places in the past. This is not the same as marking them as complete or finished; I always find myself returning to these homes of thought and experience eventually.
+
+Institutional memory and its destruction – whether through explicit or surreptitious means – has always fascinated me and photography allows me to explore what types of experiences and creations belonging to me will be known to others after I leave places. Will my almost twenty years in my hometown of Atkinson, New Hampshire – where the black population is recorded as 0.0% be tattooed on the town’s body when I depart for the last time? Will my future photographs that encapsulate tensions and traditions encapsulating my view of Yale’s community belong in any archive across this campus? Will my thoughts and I – for my ugliness and beauty – be remembered?
 
 By using a monochromatic aesthetic, I can create visuals that root viewers in a distinct, fleeting moment. I resist the idea that black and white photos will always evoke a feeling of timelessness. I enter every project with the intention of questioning this norm and placing the viewer in a particular moment or scene. Any ambition to create a timeless or finished work renders it lifeless. Its mortality and rebirth will always be the most beautiful.
 
@@ -15,8 +16,9 @@ Kris Aziabor is a visual artist. Minimalistic aesthetics are combined with mono
 
 ## 03
 
-The camera – my main mode of art making – is my machine of reflection and placing mental & physical places in the past. This is not the same as marking them as complete or finished; I always find myself returning to these homes of thought and experience eventually. Institutional memory and its destruction – whether through explicit or surreptitious means – has always fascinated me and photography allows me to explore what types of experiences and creations belonging to me will be known to others after I leave places. Will my almost twenty years in my hometown of Atkinson, New Hampshire – where the black population is recorded as 0.0% be tattooed on the town’s body when I depart for the last time? Will my future photographs that encapsulate tensions and traditions encapsulating my view of Yale’s community belong in any archive  
-across this campus? Will my thoughts and I – for my ugliness and beauty – be remembered?
+The camera – my main mode of art making – is my machine of reflection and placing mental & physical places in the past. This is not the same as marking them as complete or finished; I always find myself returning to these homes of thought and experience eventually.
+
+Institutional memory and its destruction – whether through explicit or surreptitious means – has always fascinated me and photography allows me to explore what types of experiences and creations belonging to me will be known to others after I leave places. Will my almost twenty years in my hometown of Atkinson, New Hampshire – where the black population is recorded as 0.0% be tattooed on the town’s body when I depart for the last time? Will my future photographs that encapsulate tensions and traditions encapsulating my view of Yale’s community belong in any archive across this campus? Will my thoughts and I – for my ugliness and beauty – be remembered?
 
 My works usually share a foundation of monochromatic inkjet prints that I try to add upon in different ways. Whether it is the addition of written text stamped on top of a print or layering acrylic and other types of ink onto the surface, I like to experiment with the viewer's access to my raw work. What does it mean when I block your viewership of my piece and force you to see and understand it through a limited lens?
 

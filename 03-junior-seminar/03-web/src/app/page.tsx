@@ -30,6 +30,12 @@ export default function LandingPage() {
     }
   };
   
+  const handleExhibitMode = () => {
+    if (!isMobile) {
+      router.push('/exhibit-mode');
+    }
+  };
+  
   return (
     <div className="min-h-screen flex flex-col relative bg-black text-white landing-page">
       {/* Main content left-aligned */}
@@ -55,7 +61,13 @@ export default function LandingPage() {
       
       {/* Desktop: Enter button positioned at bottom right */}
       {!isMobile && (
-        <div className="absolute bottom-8 right-8">
+        <div className="absolute bottom-8 right-8 flex flex-col gap-4 items-end">
+          <button 
+            onClick={handleExhibitMode}
+            className="font-[family-name:var(--font-centaur)] text-xl md:text-2xl hover:text-gray-300 transition-colors duration-200 cursor-pointer"
+          >
+            Exhibit Mode
+          </button>
           <button 
             onClick={handleEnter}
             className="font-[family-name:var(--font-centaur)] text-xl md:text-2xl hover:text-gray-300 transition-colors duration-200 cursor-pointer"
