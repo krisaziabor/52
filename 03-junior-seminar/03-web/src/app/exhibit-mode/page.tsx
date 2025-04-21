@@ -133,8 +133,6 @@ export default function ExhibitMode() {
             setActiveArtist(artistName);
             setActiveStatementNumber(statementNumber);
             lastUpdateTime = now;
-            
-            console.log(`Now viewing artist ${artistName} (index ${newIndex}) - statement ${statementNumber}`);
           }
         }
       }
@@ -144,7 +142,7 @@ export default function ExhibitMode() {
     });
     
     // Capture current refs to avoid issues with cleanup function
-    const currentRefs = [...statementRefs.current];
+    const currentRefs = statementRefs.current.filter(ref => ref !== null && ref !== undefined);
     
     // Observe each statement section
     for (const ref of currentRefs) {
@@ -244,7 +242,11 @@ export default function ExhibitMode() {
       
       // Continue scrolling
       container.scrollBy(0, pixelsToScroll);
-      animationFrameId = requestAnimationFrame(scrollStep);
+      
+      // Check if the component is still mounted before continuing
+      if (scrollContainerRef.current) {
+        animationFrameId = requestAnimationFrame(scrollStep);
+      }
     };
     
     // Start the animation
@@ -252,7 +254,9 @@ export default function ExhibitMode() {
     
     // Clean up
     return () => {
-      cancelAnimationFrame(animationFrameId);
+      if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+      }
     };
   }, [isAutoScrolling]);
   

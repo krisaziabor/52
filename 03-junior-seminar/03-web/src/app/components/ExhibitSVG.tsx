@@ -11,7 +11,6 @@ interface ExhibitSVGProps {
 }
 
 export default function ExhibitSVG({ 
-  artistName, 
   statementNumber, 
   onPlayToggle, 
   isAtEnd = false,
@@ -26,9 +25,7 @@ export default function ExhibitSVG({
     }
   }, [isAtEnd, isPlaying]);
   
-  useEffect(() => {
-    console.log(`ExhibitSVG rendering for artist=${artistName}, statement=${statementNumber}`);
-  }, [artistName, statementNumber]);
+  // Remove console.log statement that might be causing issues
   
   // Handle button click based on current state
   const handleButtonClick = () => {
