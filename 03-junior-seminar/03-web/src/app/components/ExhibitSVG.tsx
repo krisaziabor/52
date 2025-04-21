@@ -1,53 +1,81 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 
-interface SVGTimelineDemoProps {
-  activeArtistIndex: number;
-  totalArtists: number;
+interface ExhibitSVGProps {
+  artistName: string;          // Current artist name
+  statementNumber: string;     // Current statement number (e.g., "01", "02", etc.)
+  onPlayToggle: (isPlaying: boolean) => void; // Callback for play/pause toggling
+  isAtEnd?: boolean;           // Whether we've reached the end of content
+  onRestart?: () => void;      // Callback to restart from the top
 }
 
-export default function SVGTimelineDemo({ activeArtistIndex, totalArtists }: SVGTimelineDemoProps) {
-  // Log when the component receives new props
+export default function ExhibitSVG({ 
+  artistName, 
+  statementNumber, 
+  onPlayToggle, 
+  isAtEnd = false,
+  onRestart 
+}: ExhibitSVGProps) {
+  const [isPlaying, setIsPlaying] = useState(false);
+  
   useEffect(() => {
-    console.log(`SVGTimelineDemo received: activeArtistIndex=${activeArtistIndex}, totalArtists=${totalArtists}`);
-  }, [activeArtistIndex, totalArtists]);
-  // Calculate which sections to fill based on artist index
-  const getFilledSections = useCallback(() => {
-    // If totalArtists is 0, we can't calculate sections
-    if (totalArtists <= 0) return [];
-    
-    // The SVG has 9 total sections, so we'll map the artist index to sections
-    const sectionsPerArtist = Math.ceil(9 / totalArtists);
-    const filledSections = [];
-    
-    // Fill sections based on current artist index
-    // We add 1 to activeArtistIndex to make it 1-based for calculations
-    const artistIndexForCalc = activeArtistIndex;
-    
-    // Simple calculation: each artist fills (artistIndex + 1) * (sections/totalArtists) sections
-    const sectionsToFill = Math.min(
-      Math.ceil((artistIndexForCalc + 1) * sectionsPerArtist), 
-      9
-    );
-    
-    console.log(`Filling ${sectionsToFill} sections for artist index ${activeArtistIndex}`);
-    
-    // Fill the calculated number of sections
-    for (let i = 0; i < sectionsToFill; i++) {
-      filledSections.push(`section${i + 1}`);
+    // If we're at the end, auto-stop playing
+    if (isAtEnd && isPlaying) {
+      setIsPlaying(false);
     }
-    
-    return filledSections;
-  }, [activeArtistIndex, totalArtists]);
-
-  const [filledSections, setFilledSections] = useState<string[]>(getFilledSections());
-
+  }, [isAtEnd, isPlaying]);
+  
   useEffect(() => {
-    setFilledSections(getFilledSections());
-  }, [getFilledSections]);
+    console.log(`ExhibitSVG rendering for artist=${artistName}, statement=${statementNumber}`);
+  }, [artistName, statementNumber]);
+  
+  // Handle button click based on current state
+  const handleButtonClick = () => {
+    if (isAtEnd) {
+      // If at the end, just restart - don't start playing
+      if (onRestart) onRestart();
+      // Ensure playing is false - this will show "PLAY" after restart
+      setIsPlaying(false);
+      // Also notify parent that we're not playing
+      onPlayToggle(false);
+    } else {
+      // Otherwise toggle play/pause
+      const newPlayingState = !isPlaying;
+      setIsPlaying(newPlayingState);
+      onPlayToggle(newPlayingState);
+    }
+  };
 
-  // Define our 9 sections in the SVG with their IDs
+  // Calculate which sections to fill based on statement number
+  const calculateSectionsToFill = () => {
+    if (!statementNumber) return [];
+    
+    // Convert statement number to integer (e.g., "01" -> 1)
+    const statementNum = parseInt(statementNumber);
+    
+    // We'll fill sections based on statement number
+    // Each statement corresponds to a specific section
+    const sectionMap: Record<number, string[]> = {
+      1: ["section1"],                           // Statement 1 fills section 1
+      2: ["section1", "section2"],               // Statement 2 fills sections 1-2
+      3: ["section1", "section2", "section3"],   // Statement 3 fills sections 1-3
+      4: ["section1", "section2", "section3", "section4"],
+      5: ["section1", "section2", "section3", "section4", "section5"],
+      6: ["section1", "section2", "section3", "section4", "section5", "section6"],
+      7: ["section1", "section2", "section3", "section4", "section5", "section6", "section7"],
+      8: ["section1", "section2", "section3", "section4", "section5", "section6", "section7", "section8"],
+      9: ["section1", "section2", "section3", "section4", "section5", "section6", "section7", "section8", "section9"]
+    };
+    
+    // Return the sections to fill for this statement number
+    return sectionMap[statementNum] || [];
+  };
+
+  // Get sections to fill
+  const filledSectionIds = calculateSectionsToFill();
+  
+  // All available sections
   const sections = [
     { id: "section1", path: "M751.521 312.68L722.021 304.9C722.021 304.9 713.701 330.48 747.941 343.2C747.941 343.2 719.081 340.26 709.801 374.02L783.661 387.22L790.501 354.94C790.501 354.94 821.321 361.3 816.421 394.56C816.421 394.56 827.161 360.04 855.781 367.76L862.041 369.54" },
     { id: "section2", path: "M558.84 343L783 387V392.5L557.5 350.5L558.84 343Z" },
@@ -86,9 +114,9 @@ export default function SVGTimelineDemo({ activeArtistIndex, totalArtists }: SVG
         <path d="M783.639 387.22L782.779 392.54L720.959 380.52L716.999 407.6L708.419 405.52L713.499 379.06L557.299 350L556.599 349.88L551.399 374.06L543.859 372.24L548.899 347.06L535.979 344.54C535.979 344.54 500.919 481.06 499.019 495.84C497.119 510.62 402.139 939.92 400.699 1004.86C400.699 1004.86 400.819 1009.54 401.999 1026.34" stroke="#231F20" strokeWidth="2" strokeMiterlimit="10"/>
         <path d="M556.6 349.88L558.02 343.5" stroke="#231F20" strokeWidth="2" strokeMiterlimit="10"/>
 
-        {/* Render sections with conditional filling */}
+        {/* Render all sections with conditional filling */}
         {sections.map((section) => {
-          const isFilled = filledSections.includes(section.id);
+          const isFilled = filledSectionIds.includes(section.id);
           
           return (
             <path
@@ -98,11 +126,21 @@ export default function SVGTimelineDemo({ activeArtistIndex, totalArtists }: SVG
               stroke="#231F20"
               strokeWidth="2"
               strokeMiterlimit="10"
-              className="transition-all duration-500"
+              className="transition-all duration-300 ease-in-out"
             />
           );
         })}
       </svg>
+      
+      {/* Play/Pause/Restart Toggle Button */}
+      <div className="text-center mt-4">
+        <button 
+          className="font-[family-name:var(--font-elle-two)] text-lg uppercase tracking-wider hover:opacity-70 transition-opacity"
+          onClick={handleButtonClick}
+        >
+          {isAtEnd ? 'RESTART' : isPlaying ? 'PAUSE' : 'PLAY'}
+        </button>
+      </div>
     </div>
   );
 }

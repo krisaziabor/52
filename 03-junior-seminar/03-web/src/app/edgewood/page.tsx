@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 import ArtistStatements from '../components/ArtistStatements';
 
 interface ArtistStatement {
@@ -60,7 +61,13 @@ export default function EdgewoodPage() {
   }
 
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] min-h-screen p-4 pb-20 gap-6 sm:p-10 bg-white">
+    <div className="grid grid-rows-[20px_1fr_20px] min-h-screen p-4 pb-20 gap-6 sm:p-10 bg-white relative">
+      <Link 
+        href="/"
+        className="absolute top-4 left-4 z-50 font-[family-name:var(--font-centaur)] text-lg hover:underline"
+      >
+        ← Back to home
+      </Link>
       <main className="row-start-2 flex">
         <div className="w-2/5 hidden sm:block overflow-hidden">
           <div>
