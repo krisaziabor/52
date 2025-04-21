@@ -323,10 +323,10 @@ export default function ArtistStatements({ artistNames, artistsData }: ArtistSta
               <div className="md:w-1/2">
                 {/* Statement content */}
                 {activeStatement ? (
-                  <div className="statement-container prose max-w-none font-[family-name:var(--font-centaur)] text-xl [&>*]:text-xl leading-relaxed">
+                  <div className="statement-container prose max-w-none font-[family-name:var(--font-centaur)] text-xl [&>*]:text-xl leading-loose">
                     <div 
                       dangerouslySetInnerHTML={{ __html: activeStatementContent }} 
-                      className="space-y-4"
+                      className="space-y-6"
                     />
                   </div>
                 ) : (
@@ -338,87 +338,34 @@ export default function ArtistStatements({ artistNames, artistsData }: ArtistSta
             </div>
           </div>
         ) : (
-          <div className="font-[family-name:var(--font-centaur)] text-xl">
-            4. No Idea If This Is Good Or Not 
-            <br />
-            is the exhibit for the Junior Seminar class of Spring 2025.
-            <br />
-            <br />
-            Whatever artist statement goes here.
-            <br />
-            <br />
-            Elle gave us one continuous assignment across the last three months; every week, write a whole new artist statement.
-            <br />
-            <br />
-            Constantly returning to the body of text led us down paths and experiments on how to express ourselves and our work to the world.
-            <br />
-            <br />
-            We used emojis, Instagram reels, and even ChatGPT generated text.
-            <br />
-            <br />
-            This microsite celebrates the tradition we shared this past semester – we hope you enjoy reading through our descriptions of ourselves.
-
+          <div className="font-[family-name:var(--font-centaur)] text-xl leading-loose space-y-6">
+            <p className="mb-6">
+              4. No Idea If This Is Good Or Not is the exhibit for the Junior Seminar class of Spring 2025.
+            </p>
+            
+            <p className="mb-6">
+              Whatever artist statement goes here.
+            </p>
+            
+            <p className="mb-6">
+              Elle gave us one continuous assignment across the last three months; every week, write a whole new artist statement.
+            </p>
+            
+            <p className="mb-6">
+              Constantly returning to the body of text led us down paths and experiments on how to express ourselves and our work to the world.
+            </p>
+            
+            <p className="mb-6">
+              We used emojis, Instagram reels, and even ChatGPT generated text.
+            </p>
+            
+            <p className="mb-6">
+              This microsite celebrates the tradition we shared this past semester – we hope you enjoy reading through our descriptions of ourselves.
+            </p>
           </div>
         )}
       </div>
       
-      {/* JavaScript that triggers artist selection when sidebar items are clicked */}
-      <script dangerouslySetInnerHTML={{
-        __html: `
-          document.addEventListener('DOMContentLoaded', () => {
-            // No initial active state
-            
-            // Add click listeners for artist names
-            document.querySelectorAll('li[data-artist-name]').forEach(li => {
-              li.addEventListener('click', (e) => {
-                const target = e.currentTarget;
-                const artistName = target.getAttribute('data-artist-name');
-                
-                // Update active state for all items
-                document.querySelectorAll('li[data-artist-name]').forEach(item => {
-                  item.setAttribute('data-active', 'false');
-                  item.classList.add('opacity-30');
-                  const span = item.querySelector('span');
-                  if (span) {
-                    span.classList.remove('text-7xl');
-                  }
-                });
-                
-                // Update active state for clicked item
-                target.setAttribute('data-active', 'true');
-                target.classList.remove('opacity-30');
-                // Not adding opacity-100 to keep it at normal level
-                const span = target.querySelector('span');
-                if (span) {
-                  span.classList.add('text-7xl');
-                }
-                
-                // Dispatch event for state update
-                document.dispatchEvent(new CustomEvent('selectArtist', { detail: { name: artistName } }));
-              });
-            });
-
-            // Add click listener for the title to reset the view
-            const titleElement = document.getElementById('title-reset');
-            if (titleElement) {
-              titleElement.addEventListener('click', () => {
-                // Reset all artists to normal state
-                document.querySelectorAll('li[data-artist-name]').forEach(item => {
-                  item.setAttribute('data-active', 'false');
-                  item.classList.add('opacity-30');
-                  const span = item.querySelector('span');
-                  if (span) {
-                    span.classList.remove('text-7xl');
-                  }
-                });
-                
-                // Clear any active artist selection
-                document.dispatchEvent(new CustomEvent('selectArtist', { detail: { name: '' } }));
-              });
-            }
-          });
-        `
-      }} />
     </div>
   );
 }

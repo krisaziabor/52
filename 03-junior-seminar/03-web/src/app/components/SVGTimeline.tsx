@@ -9,7 +9,8 @@ interface SVGTimelineProps {
 }
 
 export default function SVGTimeline({ onStatementSelect, activeStatement, availableStatements = [] }: SVGTimelineProps) {
-  const [hoveredElement, setHoveredElement] = useState<string | null>(null);
+  // Changed to store just the statement number for hover state
+  const [hoveredStatementNumber, setHoveredStatementNumber] = useState<string | null>(null);
   
   // Define our 9 clickable sections in the SVG with their IDs - updated for v4 SVG
   const sections = [
@@ -23,6 +24,13 @@ export default function SVGTimeline({ onStatementSelect, activeStatement, availa
     { id: "section8", statementNumber: "08", path: "M464.5 1211L600 1235.5L595.5 1256.5L460.5 1229.5L464.5 1211Z" },
     { id: "section9", statementNumber: "09", path: "M694.339 1268.16L682.279 1271.28L674.339 1315.18C674.339 1315.18 636.799 1304.6 640.499 1260.18C640.499 1260.18 637.159 1301.14 588.699 1298.06L598.679 1250.04" },
   ];
+  
+  // Helper function to handle hover state changes
+  const handleHover = (statementNumber: string | null) => {
+    if (statementNumber === null || availableStatements.includes(statementNumber)) {
+      setHoveredStatementNumber(statementNumber);
+    }
+  };
 
   return (
     <div className="flex flex-col gap-6 w-full">
@@ -30,6 +38,8 @@ export default function SVGTimeline({ onStatementSelect, activeStatement, availa
       <div className="flex justify-center gap-4 mb-4">
         {sections.map((section, index) => {
           const isAvailable = availableStatements.includes(section.statementNumber);
+          const isActive = activeStatement === section.statementNumber;
+          const isHovered = hoveredStatementNumber === section.statementNumber;
           
           return (
             <button
@@ -39,18 +49,21 @@ export default function SVGTimeline({ onStatementSelect, activeStatement, availa
                 font-[family-name:var(--font-centaur)] text-lg leading-none
                 border-2 transition-all duration-200
                 pt-0.5 text-center
-                ${activeStatement === section.statementNumber ? 
+                ${isActive ? 
                   'bg-black text-white border-black' : 
-                  isAvailable ? 'border-gray-300 hover:bg-gray-100' : 'border-gray-200 text-gray-300 cursor-not-allowed'}
+                  isHovered && isAvailable ? 
+                    'bg-gray-200 border-gray-400' : 
+                    isAvailable ? 'border-gray-300 hover:bg-gray-100' : 
+                      'border-gray-200 text-gray-300 cursor-not-allowed'}
               `}
               onMouseEnter={() => {
                 if (isAvailable) {
-                  setHoveredElement(section.id);
+                  handleHover(section.statementNumber);
                 }
               }}
               onMouseLeave={() => {
                 if (isAvailable) {
-                  setHoveredElement(null);
+                  handleHover(null);
                 }
               }}
               onClick={() => {
@@ -95,7 +108,7 @@ export default function SVGTimeline({ onStatementSelect, activeStatement, availa
           {/* Interactive sections - will highlight on hover/active */}
           {sections.map((section) => {
             const isActive = activeStatement === section.statementNumber;
-            const isHovered = hoveredElement === section.id;
+            const isHovered = hoveredStatementNumber === section.statementNumber;
             const isAvailable = availableStatements.includes(section.statementNumber);
             
             // Create a highlight effect with a slightly larger path for better visibility
@@ -127,12 +140,12 @@ export default function SVGTimeline({ onStatementSelect, activeStatement, availa
                   className={`transition-colors duration-200 ${isAvailable ? 'cursor-pointer' : 'cursor-not-allowed'}`}
                   onMouseEnter={() => {
                     if (isAvailable) {
-                      setHoveredElement(section.id);
+                      handleHover(section.statementNumber);
                     }
                   }}
                   onMouseLeave={() => {
                     if (isAvailable) {
-                      setHoveredElement(null);
+                      handleHover(null);
                     }
                   }}
                   onClick={() => {
