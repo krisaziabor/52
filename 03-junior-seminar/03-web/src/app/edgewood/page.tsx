@@ -99,7 +99,7 @@ export default function EdgewoodPage() {
                 id="title-reset"
                 onClick={handleReset}
               >
-                No Idea If This Is Good Or Not
+                No Idea If This Is Bad Or Not
               </h2>
             </div>
           </div>
