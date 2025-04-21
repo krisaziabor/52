@@ -62,15 +62,15 @@ I have been – quite unseriously – trying to secure an internship in product 
 
 "Kris Atteh Kojo Aziabor is a chameleon, constantly shifting between making products, fine arts, & written works to uplift collective memories and knowledge above all else.
 
-In his third year at Yale University, he leads the college's undergrad design studio – [Design at YaleLinks to an external site.](https://designatyale.com/) – and majors in Computing and the Arts.
+In his third year at Yale University, he leads the college's undergrad design studio – [Design at Yale](https://designatyale.com/) – and majors in Computing and the Arts.
 
-Previously software (full-stack) at [Fidelity InvestmentsLinks to an external site.](https://www.fidelity.com/) and [cyclioLinks to an external site.](https://cyclio.webflow.io/)."
+Previously software (full-stack) at [Fidelity Investments](https://www.fidelity.com/) and [cyclio](https://cyclio.webflow.io/)."
 
 "Kris designs. He codes. He runs a studio too.
 
-Ex-software (full-stack) @ [Fidelity InvestmentsLinks to an external site.](https://fidelity.com/) & [cyclioLinks to an external site.](https://cyclio.webflow.io/).
+Ex-software (full-stack) @ [Fidelity Investments](https://fidelity.com/) & [cyclio](https://cyclio.webflow.io/).
 
-Currently leading [Design at YaleLinks to an external site.](https://designatyale.com/)."
+Currently leading [Design at Yale](https://designatyale.com/)."
 
 "Any ambition to create a timeless work renders it lifeless.  
 Its cycle of mortality and rebirth will always be the most beautiful.  
