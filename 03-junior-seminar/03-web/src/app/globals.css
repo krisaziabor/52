@@ -1,0 +1,80 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+/* Always use light theme */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #ffffff;
+    --foreground: #171717;
+  }
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Landing page specific styles */
+.landing-page {
+  background-color: black;
+  color: white;
+}
+
+.font-diatype {
+  font-family: var(--font-diatype), Arial, sans-serif !important;
+}
+
+.font-centaur {
+  font-family: var(--font-centaur), 'Times New Roman', serif !important;
+  font-size: 1.25rem;
+}
+
+/* SVG Timeline Styles */
+.svg-timeline-section {
+  cursor: pointer;
+  transition: fill 0.2s ease-in-out;
+  fill: transparent;
+}
+
+.svg-timeline-section:hover {
+  fill: #4A4A4A !important;
+}
+
+.svg-timeline-active {
+  fill: #000000 !important;
+}
+
+/* Statement Content Styles */
+.statement-container p {
+  margin-bottom: 1.5rem;
+}
+
+.statement-container br {
+  content: "";
+  display: block;
+  margin-bottom: 1rem;
+}
+
+/* Animation for the SVG highlight effect */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
