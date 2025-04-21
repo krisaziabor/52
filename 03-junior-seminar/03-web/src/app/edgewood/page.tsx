@@ -1,7 +1,6 @@
-import { promises as fs } from 'fs';
-import path from 'path';
-import { remark } from 'remark';
-import html from 'remark-html';
+'use client';
+
+import { useState, useEffect } from 'react';
 import ArtistStatements from '../components/ArtistStatements';
 
 interface ArtistStatement {
@@ -10,51 +9,56 @@ interface ArtistStatement {
   isComplete: boolean;
 }
 
-// Parse the Markdown content to extract statements
-async function parseArtistMarkdown(fileContent: string): Promise<ArtistStatement[]> {
-  const statements: ArtistStatement[] = [];
-  const sections = fileContent.split(/^## /gm).slice(1); // Skip the title section
+export default function EdgewoodPage() {
+  const [artistsData, setArtistsData] = useState<Record<string, ArtistStatement[]>>({});
+  const [artistNames, setArtistNames] = useState<string[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
   
-  for (const section of sections) {
-    const [number, ...contentParts] = section.split('\n');
-    const content = contentParts.join('\n').trim();
-    const isComplete = content !== 'N/A';
-    
-    const processedContent = await remark()
-      .use(html)
-      .process(content);
-    
-    statements.push({
-      number: number.trim(),
-      content: processedContent.toString(),
-      isComplete
-    });
-  }
-  
-  return statements;
-}
-
-export default async function EdgewoodPage() {
-  // Get all artist files from the data directory
-  const dataDirectory = path.join(process.cwd(), 'src/app/data');
-  const filenames = await fs.readdir(dataDirectory);
-  
-  // Process all the artists and their statements
-  const artistsData: Record<string, ArtistStatement[]> = {};
-  
-  for (const filename of filenames) {
-    if (filename.endsWith('.md')) {
-      const artistName = filename.replace('.md', '');
-      const filePath = path.join(dataDirectory, filename);
-      const fileContent = await fs.readFile(filePath, 'utf8');
-      const statements = await parseArtistMarkdown(fileContent);
-      artistsData[artistName] = statements;
+  useEffect(() => {
+    // Fetch the artist data
+    async function fetchData() {
+      try {
+        const response = await fetch('/api/artists');
+        const data = await response.json();
+        setArtistsData(data.artistsData);
+        setArtistNames(data.artistNames);
+      } catch (error) {
+        console.error('Error fetching artist data:', error);
+      } finally {
+        setLoading(false);
+      }
     }
+    
+    fetchData();
+  }, []);
+  
+  // State for artist selection in React instead of DOM manipulation
+  const [selectedArtist, setSelectedArtist] = useState<string>('');
+  
+  // Function to select an artist
+  const handleArtistSelect = (name: string) => {
+    setSelectedArtist(name);
+    // Dispatch the event for the ArtistStatements component
+    document.dispatchEvent(new CustomEvent('selectArtist', { detail: { name } }));
+  };
+  
+  // Function to reset artist selection
+  const handleReset = () => {
+    setSelectedArtist('');
+    document.dispatchEvent(new CustomEvent('selectArtist', { detail: { name: '' } }));
+  };
+
+  // Loading state
+  if (loading) {
+    return (
+      <div className="grid grid-rows-[20px_1fr_20px] min-h-screen p-4 pb-20 gap-6 sm:p-10 bg-white">
+        <main className="row-start-2 flex items-center justify-center">
+          <p className="text-xl font-[family-name:var(--font-centaur)]">Loading artist statements...</p>
+        </main>
+      </div>
+    );
   }
-  
-  // Get artist names and sort them
-  const artistNames = Object.keys(artistsData).sort();
-  
+
   return (
     <div className="grid grid-rows-[20px_1fr_20px] min-h-screen p-4 pb-20 gap-6 sm:p-10 bg-white">
       <main className="row-start-2 flex">
@@ -65,10 +69,18 @@ export default async function EdgewoodPage() {
                 <li 
                   key={index} 
                   data-artist-name={name}
-                  className="cursor-pointer transition-all duration-200 group -mt-2 opacity-30 hover:opacity-[initial]"
-                  data-active="false"
+                  className={`cursor-pointer transition-all duration-200 group -mt-2 
+                    ${selectedArtist === name ? 'opacity-100' : 'opacity-30'} 
+                    hover:opacity-[initial]`}
+                  data-active={selectedArtist === name ? "true" : "false"}
+                  onClick={() => handleArtistSelect(name)}
                 >
-                  <span className="block lowercase group-hover:text-7xl transition-all duration-200">{name}</span>
+                  <span className={`block lowercase transition-all duration-200 
+                    ${selectedArtist === name ? 'text-7xl' : ''} 
+                    group-hover:text-7xl`}
+                  >
+                    {name}
+                  </span>
                 </li>
               ))}
             </ul>
@@ -85,6 +97,7 @@ export default async function EdgewoodPage() {
               <h2 
                 className="font-[family-name:var(--font-elle-two)] text-2xl uppercase tracking-wide text-gray-700 cursor-pointer hover:text-black transition-colors duration-200" 
                 id="title-reset"
+                onClick={handleReset}
               >
                 No Idea If This Is Good Or Not
               </h2>

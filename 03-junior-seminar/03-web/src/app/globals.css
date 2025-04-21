@@ -56,13 +56,36 @@ body {
 
 /* Statement Content Styles */
 .statement-container p {
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
+  line-height: 1.8;
 }
 
 .statement-container br {
   content: "";
   display: block;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Additional spacing for paragraphs and text elements */
+.statement-container h1, 
+.statement-container h2, 
+.statement-container h3, 
+.statement-container h4, 
+.statement-container h5, 
+.statement-container h6 {
+  margin-top: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.statement-container ul, 
+.statement-container ol {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.statement-container li {
+  margin-bottom: 0.75rem;
+  line-height: 1.8;
 }
 
 /* Animation for the SVG highlight effect */
