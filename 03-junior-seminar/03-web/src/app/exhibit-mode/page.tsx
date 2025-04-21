@@ -191,7 +191,6 @@ export default function ExhibitMode() {
   // Handle play/pause toggle from the ExhibitSVG component
   const handlePlayToggle = useCallback((isPlaying: boolean) => {
     console.log(`Auto-scrolling ${isPlaying ? 'started' : 'stopped'}`);
-    setIsAutoScrolling(isPlaying);
     
     // Reset end state when starting to play
     if (isPlaying) {
@@ -200,6 +199,7 @@ export default function ExhibitMode() {
     
     // If we're stopping, just return
     if (!isPlaying) {
+      setIsAutoScrolling(false);
       return;
     }
     
@@ -210,12 +210,20 @@ export default function ExhibitMode() {
         container.scrollHeight - container.scrollTop <= container.clientHeight + 100;
       
       if (isAtBottom) {
-        // Scroll back to top
-        container.scrollTo({
-          top: 0,
-          behavior: 'smooth'
-        });
+        // Scroll back to top - first use manual scrollTop for Safari compatibility
+        container.scrollTop = 0;
+        
+        // Small delay before starting auto-scroll to ensure the scroll position is reset
+        setTimeout(() => {
+          setIsAutoScrolling(true);
+        }, 100);
+      } else {
+        // Start auto-scrolling immediately if we're not at the bottom
+        setIsAutoScrolling(true);
       }
+    } else {
+      // Fallback in case the container ref isn't available
+      setIsAutoScrolling(true);
     }
   }, []);
   
@@ -244,12 +252,20 @@ export default function ExhibitMode() {
       pixelsPerSecond = 18; // Slightly faster for Firefox
     }
     
-    // Use interval as fallback for older browsers that may have inconsistent rAF timing
-    if (isIE || isEdgeLegacy) {
-      // For older browsers, use setInterval as a more reliable fallback
+    // Use interval as fallback for Safari and older browsers that may have inconsistent rAF timing
+    if (isSafari || isIE || isEdgeLegacy) {
+      // For Safari and older browsers, use setInterval as a more reliable fallback
       intervalId = setInterval(() => {
-        // Simple time-based scrolling for older browsers
-        container.scrollBy(0, pixelsPerSecond / 60); // ~60fps equivalent
+        // Simple time-based scrolling for Safari and older browsers
+        // Safari needs a direct scroll value rather than incremental scrollBy
+        if (isSafari) {
+          // For Safari: set absolute scroll position instead of relative
+          const newScrollTop = container.scrollTop + (pixelsPerSecond / 60);
+          container.scrollTop = newScrollTop;
+        } else {
+          // For older IE/Edge: use scrollBy
+          container.scrollBy(0, pixelsPerSecond / 60); // ~60fps equivalent
+        }
         
         // Check if we've reached the bottom
         const isAtBottom = 
