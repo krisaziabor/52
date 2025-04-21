@@ -231,7 +231,7 @@ export default function ExhibitMode() {
     // Detect browser and adjust settings accordingly
     const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
     const isFirefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
-    const isIE = typeof document !== 'undefined' && !!(document as Document).documentMode;
+    const isIE = typeof document !== 'undefined' && 'documentMode' in document;
     const isEdgeLegacy = !isIE && typeof window !== 'undefined' && !!(window as Window & { StyleMedia?: unknown }).StyleMedia;
     
     // Adjust scroll speed based on browser
