@@ -4,6 +4,13 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import Link from 'next/link';
 import ExhibitSVG from '../components/ExhibitSVG';
 
+// Polyfill for Intersection Observer API for older browsers
+const setupIntersectionObserverPolyfill = () => {
+  if (!('IntersectionObserver' in window)) {
+    import('intersection-observer');
+  }
+};
+
 interface ArtistStatement {
   number: string;
   content: string;
@@ -86,6 +93,9 @@ export default function ExhibitMode() {
   
   // Set up Intersection Observer
   useEffect(() => {
+    // Initialize the polyfill
+    setupIntersectionObserverPolyfill();
+    
     // Make sure refs are populated before setting up the observer
     const statements = flattenedStatements();
     if (!statementRefs.current.length || statements.length === 0) return;
@@ -209,53 +219,96 @@ export default function ExhibitMode() {
     }
   }, []);
   
-  // Auto-scrolling effect
+  // Auto-scrolling effect with browser detection
   useEffect(() => {
     if (!isAutoScrolling || !scrollContainerRef.current) return;
     
     const container = scrollContainerRef.current;
     let animationFrameId: number;
     let lastTimestamp: number;
-    const pixelsPerSecond = 15; // 15 pixels per second scrolling speed (even slower for better reading)
+    let intervalId: NodeJS.Timeout | null = null;
     
-    // Create a smooth scrolling animation using timestamps for frame rate independence
-    const scrollStep = (timestamp: number) => {
-      if (!lastTimestamp) lastTimestamp = timestamp;
-      
-      // Calculate time elapsed since last frame
-      const elapsed = timestamp - lastTimestamp;
-      lastTimestamp = timestamp;
-      
-      // Calculate how many pixels to scroll based on elapsed time
-      const pixelsToScroll = (pixelsPerSecond * elapsed) / 1000;
-      
-      // Check if we've reached the bottom
-      const isAtBottom = 
-        container.scrollHeight - container.scrollTop <= container.clientHeight + 20;
-      
-      if (isAtBottom) {
-        // We've reached the bottom, stop auto-scrolling and set end state
-        setIsAutoScrolling(false);
-        setIsAtEnd(true);
-        return;
-      }
-      
-      // Continue scrolling
-      container.scrollBy(0, pixelsToScroll);
-      
-      // Check if the component is still mounted before continuing
-      if (scrollContainerRef.current) {
-        animationFrameId = requestAnimationFrame(scrollStep);
-      }
-    };
+    // Detect browser and adjust settings accordingly
+    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    const isFirefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
+    const isIE = typeof document !== 'undefined' && !!(document as Document).documentMode;
+    const isEdgeLegacy = !isIE && typeof window !== 'undefined' && !!(window as Window & { StyleMedia?: unknown }).StyleMedia;
     
-    // Start the animation
-    animationFrameId = requestAnimationFrame(scrollStep);
+    // Adjust scroll speed based on browser
+    let pixelsPerSecond = 15; // Default: 15 pixels per second for Chrome and others
+    
+    if (isSafari || isIE || isEdgeLegacy) {
+      // Safari and IE/Edge tend to have different timing characteristics
+      pixelsPerSecond = 12; // Slightly slower for Safari/IE/Edge
+    } else if (isFirefox) {
+      pixelsPerSecond = 18; // Slightly faster for Firefox
+    }
+    
+    // Use interval as fallback for older browsers that may have inconsistent rAF timing
+    if (isIE || isEdgeLegacy) {
+      // For older browsers, use setInterval as a more reliable fallback
+      intervalId = setInterval(() => {
+        // Simple time-based scrolling for older browsers
+        container.scrollBy(0, pixelsPerSecond / 60); // ~60fps equivalent
+        
+        // Check if we've reached the bottom
+        const isAtBottom = 
+          container.scrollHeight - container.scrollTop <= container.clientHeight + 20;
+        
+        if (isAtBottom) {
+          // We've reached the bottom, stop auto-scrolling and set end state
+          if (intervalId) clearInterval(intervalId);
+          setIsAutoScrolling(false);
+          setIsAtEnd(true);
+        }
+      }, 16); // ~60fps
+    } else {
+      // For modern browsers, use requestAnimationFrame for smoother scrolling
+      // Create a smooth scrolling animation using timestamps for frame rate independence
+      const scrollStep = (timestamp: number) => {
+        if (!lastTimestamp) lastTimestamp = timestamp;
+        
+        // Calculate time elapsed since last frame
+        const elapsed = timestamp - lastTimestamp;
+        lastTimestamp = timestamp;
+        
+        // Use a min/max to prevent extreme values during tab switches or other delays
+        const cappedElapsed = Math.min(Math.max(elapsed, 1), 100);
+        
+        // Calculate how many pixels to scroll based on elapsed time
+        const pixelsToScroll = (pixelsPerSecond * cappedElapsed) / 1000;
+        
+        // Check if we've reached the bottom
+        const isAtBottom = 
+          container.scrollHeight - container.scrollTop <= container.clientHeight + 20;
+        
+        if (isAtBottom) {
+          // We've reached the bottom, stop auto-scrolling and set end state
+          setIsAutoScrolling(false);
+          setIsAtEnd(true);
+          return;
+        }
+        
+        // Continue scrolling
+        container.scrollBy(0, pixelsToScroll);
+        
+        // Check if the component is still mounted before continuing
+        if (scrollContainerRef.current) {
+          animationFrameId = requestAnimationFrame(scrollStep);
+        }
+      };
+      
+      // Start the animation
+      animationFrameId = requestAnimationFrame(scrollStep);
+    }
     
     // Clean up
     return () => {
       if (animationFrameId) {
         cancelAnimationFrame(animationFrameId);
+      }
+      if (intervalId) {
+        clearInterval(intervalId);
       }
     };
   }, [isAutoScrolling]);
