@@ -286,7 +286,7 @@ export default function ArtistStatements({ artistNames, artistsData }: ArtistSta
               setMobileSelected(false);
             }}
           >
-            No Idea If This Is Good Or Not
+            No Idea If This Is Bad Or Not
           </h2>
         </div>
       </div>
@@ -340,7 +340,7 @@ export default function ArtistStatements({ artistNames, artistsData }: ArtistSta
         ) : (
           <div className="font-[family-name:var(--font-centaur)] text-xl leading-loose space-y-6">
             <p className="mb-6">
-              4. No Idea If This Is Good Or Not is the exhibit for the Junior Seminar class of Spring 2025.
+              4. No Idea If This Is Bad Or Not is the exhibit for the Junior Seminar class of Spring 2025.
             </p>
             
             <p className="mb-6">

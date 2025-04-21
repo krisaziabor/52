@@ -36,7 +36,7 @@ export default function LandingPage() {
       <div className="flex-grow flex items-center p-4 md:pl-24">
         <div className="max-w-4xl w-full">
           <h1 className="font-[family-name:var(--font-elle-two)] text-4xl md:text-5xl mb-8 text-center md:text-left uppercase tracking-wide leading-tight">
-            No Idea If This Is Good Or Not
+            No Idea If This Is Bad Or Not
           </h1>
           
           {/* SVG with white strokes */}
