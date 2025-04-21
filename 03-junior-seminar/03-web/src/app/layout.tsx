@@ -27,7 +27,7 @@ const diatypeBold = localFont({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://365.krisaziabor.com'),
+  metadataBase: new URL('https://395.krisaziabor.com'),
   title: "4. No Idea if This is Bad or Not",
   description:
     "A microsite for Yale's Junior Seminar Spring 2025.",
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     title: "4. No Idea if This is Bad or Not",
     description:
     "A microsite for Yale's Junior Seminar Spring 2025.",
-    url: 'https://365.krisaziabor.com',
+    url: 'https://395.krisaziabor.com',
     siteName: "4. No Idea if This is Bad or Not",
     images: [
       {
