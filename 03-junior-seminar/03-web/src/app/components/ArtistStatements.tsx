@@ -287,23 +287,23 @@ export default function ArtistStatements({
     <div>
       {/* Artist Selection */}
       <div className={`${mobileSelected ? "hidden" : "block"}`}>
-        <ul className="font-[family-name:var(--font-elle-two)] text-4xl space-y-0 sm:hidden leading-none">
+        <ul className="font-[family-name:var(--font-elle-two)] text-3xl space-y-1 sm:hidden leading-tight">
           {artistNames.map((name, index) => (
             <li
               key={index}
-              className="cursor-pointer transition-all duration-200 -mt-2"
+              className="cursor-pointer transition-all duration-200 mb-2"
               onClick={() => handleArtistClick(name)}
             >
               <span className="block lowercase group">
                 <span
-                  className={`${activeArtist === name ? "hidden" : "block"}`}
+                  className={`${activeArtist === name ? "hidden" : "block"} py-1`}
                 >
                   {name}
                 </span>
                 <span
                   className={`${
                     activeArtist === name ? "block" : "hidden"
-                  } text-5xl`}
+                  } text-4xl font-bold py-1`}
                 >
                   {name}
                 </span>
@@ -366,16 +366,16 @@ export default function ArtistStatements({
               <div className="md:w-1/2">
                 {/* Statement content */}
                 {activeStatement ? (
-                  <div className="statement-container prose max-w-none font-[family-name:var(--font-centaur)] text-xl [&>*]:text-xl leading-loose">
+                  <div className="statement-container prose max-w-none font-[family-name:var(--font-centaur)] text-base sm:text-xl [&>*]:text-base sm:[&>*]:text-xl leading-relaxed sm:leading-loose">
                     <div
                       dangerouslySetInnerHTML={{
                         __html: activeStatementContent,
                       }}
-                      className="space-y-6"
+                      className="space-y-4 sm:space-y-6"
                     />
                   </div>
                 ) : (
-                  <div className="text-lg text-gray-500 font-[family-name:var(--font-centaur)]">
+                  <div className="text-base sm:text-lg text-gray-500 font-[family-name:var(--font-centaur)]">
                     Select a statement number to view content
                   </div>
                 )}

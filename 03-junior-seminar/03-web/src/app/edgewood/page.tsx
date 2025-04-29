@@ -68,7 +68,23 @@ export default function EdgewoodPage() {
       >
         ← Back to home
       </Link>
+      
+      {/* Mobile artist selector - only visible on small screens */}
+      <div className="sm:hidden fixed bottom-0 left-0 right-0 z-40 bg-white shadow-lg border-t border-gray-200 p-3">
+        <select 
+          className="w-full px-3 py-2 text-lg font-[family-name:var(--font-elle-two)] rounded border border-gray-300"
+          value={selectedArtist}
+          onChange={(e) => handleArtistSelect(e.target.value)}
+        >
+          <option value="">No Idea If This Is Bad Or Not</option>
+          {artistNames.map((name, index) => (
+            <option key={index} value={name}>{name}</option>
+          ))}
+        </select>
+      </div>
+      
       <main className="row-start-2 flex">
+        {/* Desktop sidebar - hidden on mobile */}
         <div className="w-2/5 hidden sm:block overflow-hidden">
           <div>
             <ul className="font-[family-name:var(--font-elle-two)] text-6xl space-y-0 leading-none">
@@ -93,14 +109,6 @@ export default function EdgewoodPage() {
             </ul>
             
             <div className="mt-32 mb-1">
-              {/* <div className="flex justify-between items-center mb-4">
-                <button 
-                  id="autoplay-toggle" 
-                  className="font-[family-name:var(--font-elle-two)] text-sm uppercase tracking-wide text-gray-700 cursor-pointer hover:text-black transition-colors duration-200"
-                >
-                  AUTOPLAY OFF
-                </button>
-              </div> */}
               <h2 
                 className="font-[family-name:var(--font-elle-two)] text-2xl uppercase tracking-wide text-gray-700 cursor-pointer hover:text-black transition-colors duration-200" 
                 id="title-reset"
@@ -112,7 +120,8 @@ export default function EdgewoodPage() {
           </div>
         </div>
         
-        <div className="w-full sm:w-3/5">
+        {/* Main content area - full width on mobile */}
+        <div className="w-full sm:w-3/5 pb-20 sm:pb-0">
           <ArtistStatements artistNames={artistNames} artistsData={artistsData} />
         </div>
       </main>
