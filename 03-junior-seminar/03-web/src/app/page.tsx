@@ -8,7 +8,7 @@ export default function LandingPage() {
   const router = useRouter();
   const [isMobile, setIsMobile] = useState(false);
   
-  // Check if device is mobile
+  // Check if device is mobile (for responsive layout only)
   useEffect(() => {
     const checkIfMobile = () => {
       setIsMobile(window.innerWidth < 768);
@@ -25,15 +25,11 @@ export default function LandingPage() {
   }, []);
   
   const handleEnter = () => {
-    if (!isMobile) {
-      router.push('/edgewood');
-    }
+    router.push('/edgewood');
   };
   
   const handleExhibitMode = () => {
-    if (!isMobile) {
-      router.push('/exhibit-mode');
-    }
+    router.push('/exhibit-mode');
   };
   
   return (
@@ -59,7 +55,7 @@ export default function LandingPage() {
         </div>
       </div>
       
-      {/* Desktop: Enter button positioned at bottom right */}
+      {/* Desktop: Navigation buttons positioned at bottom right */}
       {!isMobile && (
         <div className="absolute bottom-8 right-8 flex flex-col gap-4 items-end">
           <button 
@@ -77,18 +73,22 @@ export default function LandingPage() {
         </div>
       )}
       
-      {/* Mobile: Enter message and email option centered */}
+      {/* Mobile: Navigation buttons centered at bottom */}
       {isMobile && (
-        <div className="absolute bottom-0 left-0 right-0 flex flex-col items-center p-8 text-center">
-          <p className="font-[family-name:var(--font-centaur)] text-xl mb-6">
-            Enter Edgewood Gallery on desktop
-          </p>
-          <a 
-            href="mailto:?subject=No%20Idea%20If%20This%20Is%20Good%20Or%20Not%20site%20(for%20desktop%20viewing)&body=Here's%20the%20website%20for%20the%20exhibit%3A%20%0Ahttps%3A%2F%2F395.krisaziabor.com%0A%0AWith%20lots%20of%20love%2C%20the%20Junior%20Seminar%20class"
-            className="font-[family-name:var(--font-centaur)] text-lg hover:text-gray-300 transition-colors duration-200"
+        <div className="absolute bottom-0 left-0 right-0 flex flex-col items-center p-8 text-center gap-4">
+          <button 
+            onClick={handleExhibitMode}
+            className="font-[family-name:var(--font-centaur)] text-xl text-gray-500 opacity-60 cursor-not-allowed"
+            disabled
           >
-            Email me the link for later
-          </a>
+            Exhibit Mode (Desktop Only)
+          </button>
+          <button 
+            onClick={handleEnter}
+            className="font-[family-name:var(--font-centaur)] text-xl hover:text-gray-300 transition-colors duration-200 cursor-pointer"
+          >
+            Enter Edgewood Gallery
+          </button>
         </div>
       )}
     </div>

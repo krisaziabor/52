@@ -24,8 +24,15 @@ async function parseArtistMarkdown(fileContent: string): Promise<ArtistStatement
       .use(html)
       .process(content);
     
+    // Ensure consistent statement number format - pad to 2 digits if needed
+    let formattedNumber = number.trim();
+    // If it's a plain number (no leading zeros), pad it to maintain consistency
+    if (/^\d$/.test(formattedNumber)) {
+      formattedNumber = formattedNumber.padStart(2, '0');
+    }
+    
     statements.push({
-      number: number.trim(),
+      number: formattedNumber,
       content: processedContent.toString(),
       isComplete
     });

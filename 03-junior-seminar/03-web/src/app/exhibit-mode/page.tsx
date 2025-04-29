@@ -46,11 +46,16 @@ export default function ExhibitMode() {
     
     sortedArtistNames.forEach((artist) => {
       if (artistsData[artist]) {
-        // Sort statements by number
+        // Sort statements by number, ensuring consistent parsing of statement numbers
         const artistStatements = artistsData[artist]
           .filter(statement => statement.isComplete)
-          .sort((a, b) => parseInt(a.number) - parseInt(b.number));
-          
+          .sort((a, b) => {
+            // Remove leading zeros and parse as integer for reliable comparison
+            const numA = parseInt(a.number.replace(/^0+/, ''));
+            const numB = parseInt(b.number.replace(/^0+/, ''));
+            return numA - numB;
+          });
+        
         artistStatements.forEach(statement => {
           statements.push({
             artist,
@@ -349,6 +354,25 @@ export default function ExhibitMode() {
         ← Back to home
       </Link>
       
+      {/* Mobile controls - fixed at bottom of screen */}
+      <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white shadow-lg border-t border-gray-200 p-3 flex justify-center items-center">
+        <button 
+          className="font-[family-name:var(--font-elle-two)] text-base uppercase tracking-wide mx-3 py-2 px-5 border border-gray-300 rounded"
+          onClick={() => handlePlayToggle(!isAutoScrolling)}
+        >
+          {isAutoScrolling ? 'PAUSE' : 'PLAY'}
+        </button>
+        
+        {isAtEnd && (
+          <button 
+            className="font-[family-name:var(--font-elle-two)] text-base uppercase tracking-wide mx-3 py-2 px-5 border border-gray-300 rounded"
+            onClick={handleRestart}
+          >
+            RESTART
+          </button>
+        )}
+      </div>
+      
       <div className="grid grid-cols-1 md:grid-cols-2 min-h-screen">
         {/* Fixed SVG and artist name on the left (desktop) */}
         <div className="hidden md:flex md:flex-col md:sticky md:top-0 md:h-screen p-8">
@@ -374,15 +398,15 @@ export default function ExhibitMode() {
         </div>
         
         {/* Scrollable statements on the right */}
-        <div ref={scrollContainerRef} className="relative overflow-y-auto h-screen">
+        <div ref={scrollContainerRef} className="relative overflow-y-auto h-screen pb-16 md:pb-0">
           {/* Sticky header that extends beyond the visible area */}
-          <div className="sticky top-0 z-10 bg-white pt-12 pb-6 px-8">
-            <h1 className="font-[family-name:var(--font-elle-two)] text-4xl md:text-5xl mb-0 uppercase tracking-wide">
+          <div className="sticky top-0 z-10 bg-white pt-12 pb-6 px-4 sm:px-8">
+            <h1 className="font-[family-name:var(--font-elle-two)] text-3xl sm:text-4xl md:text-5xl mb-0 uppercase tracking-wide">
               No Idea If This Is Bad Or Not
             </h1>
           </div>
           {/* Content container with padding */}
-          <div className="p-8 pt-6">
+          <div className="p-4 sm:p-8 pt-6">
           
           {statements.map((statement, index) => {
             // Create a unique artist index - we need to get the unique sorted artists
@@ -396,31 +420,34 @@ export default function ExhibitMode() {
                 data-artist-index={artistIndex}
                 data-artist-name={statement.artist}
                 data-statement-number={statement.number}
-                className="mb-40 scroll-mt-16" // Increased margin for better readability
+                className="mb-32 md:mb-40 scroll-mt-16" // Adjusted margin for mobile
                 id={`statement-${statement.artist}-${statement.number}`}
               >
                 {/* Show artist name for mobile */}
                 <div className="md:hidden mb-8">
                   <div className="flex items-baseline gap-4 mb-4">
-                    <h2 className="font-[family-name:var(--font-elle-two)] text-4xl lowercase">
+                    <h2 className="font-[family-name:var(--font-elle-two)] text-3xl sm:text-4xl lowercase">
                       {statement.artist}
                     </h2>
-                    <span className="font-[family-name:var(--font-centaur)] text-3xl">
+                    <span className="font-[family-name:var(--font-centaur)] text-2xl sm:text-3xl">
                       {statement.number}
                     </span>
                   </div>
-                  <ExhibitSVG 
-                    artistName={statement.artist}
-                    statementNumber={statement.number}
-                    onPlayToggle={handlePlayToggle}
-                    isAtEnd={isAtEnd}
-                    onRestart={handleRestart}
-                  />
+                  {/* SVG container with better sizing for mobile */}
+                  <div className="max-w-[70%] mx-auto mb-6">
+                    <ExhibitSVG 
+                      artistName={statement.artist}
+                      statementNumber={statement.number}
+                      onPlayToggle={handlePlayToggle}
+                      isAtEnd={isAtEnd}
+                      onRestart={handleRestart}
+                    />
+                  </div>
                 </div>
                 
-                {/* Statement content with improved line spacing */}
+                {/* Statement content with improved line spacing and responsive text size */}
                 <div 
-                  className="prose max-w-none font-[family-name:var(--font-centaur)] text-xl [&>*]:text-xl leading-loose [&>p]:mb-8"
+                  className="prose max-w-none font-[family-name:var(--font-centaur)] text-lg sm:text-xl [&>*]:text-lg sm:[&>*]:text-xl leading-loose [&>p]:mb-6 sm:[&>p]:mb-8"
                   dangerouslySetInnerHTML={{ __html: statement.content }}
                 />
               </div>

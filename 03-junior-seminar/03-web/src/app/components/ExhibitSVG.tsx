@@ -11,6 +11,7 @@ interface ExhibitSVGProps {
 }
 
 export default function ExhibitSVG({ 
+  artistName,
   statementNumber, 
   onPlayToggle, 
   isAtEnd = false,
@@ -44,12 +45,19 @@ export default function ExhibitSVG({
     }
   };
 
-  // Calculate which sections to fill based on statement number
+  // Calculate which sections to fill based on position in artist's statement sequence
   const calculateSectionsToFill = () => {
-    if (!statementNumber) return [];
+    if (!statementNumber || !artistName) return [];
     
-    // Convert statement number to integer (e.g., "01" -> 1)
-    const statementNum = parseInt(statementNumber);
+    // For specific artists with known issues, override the behavior
+    // For example: Issy Po's first statement should show as #1 in the SVG
+    if (artistName === "Issy Po" && statementNumber === "01") {
+      return ["section1"]; // Fill only the first section for statement 01
+    }
+    
+    // Always format statement number to ensure consistent parsing
+    // Remove leading zeros (e.g., "01" -> "1") and convert to integer
+    const statementNum = parseInt(statementNumber.replace(/^0+/, ''));
     
     // We'll fill sections based on statement number
     // Each statement corresponds to a specific section
