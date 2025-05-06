@@ -11,8 +11,10 @@ import ClientTOC from '@/app/components/ClientTOC';
 import ProgressWrapper from '@/app/components/ProgressWrapper';
 import VimeoWrapper from '@/app/components/VimeoWrapper';
 import ProjectMetadata from '@/app/components/ProjectMetadata';
+import ClientMarkdownCarousel from '@/app/components/ClientMarkdownCarousel';
 import Footer from '@/app/footer';
 import ProjectContentWrapper from '@/app/components/ProjectContentWrapper';
+import VideoCover from '@/app/components/VideoCover';
 
 // Custom Markdown components
 const MarkdownImage = ({ alt, src }: { alt?: string; src?: string }) => {
@@ -154,6 +156,26 @@ export default async function ProjectPage(props: ProjectPageProps) {
                 VimeoPlayer: {
                   component: ({ id }: { id: string }) => (
                     <VimeoWrapper vimeoId={id} />
+                  ),
+                },
+                VideoCover: {
+                  component: ({ id }: { id: string }) => (
+                    <VideoCover vimeoId={id} />
+                  ),
+                },
+                ImageCarousel: {
+                  component: ({ paths, alts, showCaptions, height }: { 
+                    paths: string; 
+                    alts?: string;
+                    showCaptions?: string;
+                    height?: string;
+                  }) => (
+                    <ClientMarkdownCarousel 
+                      paths={paths} 
+                      alts={alts} 
+                      showCaptions={showCaptions === 'true'} 
+                      height={height ? parseInt(height) : undefined}
+                    />
                   ),
                 },
                 p: {

@@ -8,6 +8,12 @@ import { Project as ProjectType } from "../data/projects";
 import { projects as productProjects } from "../data/product/projects";
 import { projects as fiftyTwoProjects } from "../data/52/projects";
 import { useState } from "react";
+import dynamic from 'next/dynamic';
+
+// Dynamically import VimeoPlayer to ensure it only runs on client side
+const VimeoPlayer = dynamic(() => import('./VimeoPlayer'), {
+  ssr: false
+});
 
 interface ProjectListProps {
     projects?: ProjectType[]; // Make optional since we'll get from context
@@ -102,15 +108,25 @@ const ProjectList = ({ projects: propProjects }: ProjectListProps) => {
                                 </div>
                             ) : (
                                 <div className="relative w-full h-full">
-                                    <Image 
-                                        src={hoveredProject.photos[0]} 
-                                        alt={hoveredProject.name}
-                                        fill
-                                        sizes="50vw"
-                                        priority
-                                        className="object-contain transition-opacity duration-300"
-                                        style={{ imageRendering: 'crisp-edges' }}
-                                    />
+                                    {hoveredProject.videoCover ? (
+                                        <div className="w-full h-full">
+                                            <VimeoPlayer 
+                                                vimeoId={hoveredProject.videoCover.vimeoId}
+                                                play="disabled" 
+                                                mute="disabled"
+                                            />
+                                        </div>
+                                    ) : (
+                                        <Image 
+                                            src={hoveredProject.photos[0]} 
+                                            alt={hoveredProject.name}
+                                            fill
+                                            sizes="50vw"
+                                            priority
+                                            className="object-contain transition-opacity duration-300"
+                                            style={{ imageRendering: 'crisp-edges' }}
+                                        />
+                                    )}
                                 </div>
                             )
                         ) : (
@@ -162,8 +178,16 @@ const ProjectList = ({ projects: propProjects }: ProjectListProps) => {
                                             {String(project.id).padStart(2, '0')}
                                         </div>
                                         <div className="w-48 aspect-[7/5] bg-gray-100 overflow-hidden flex-shrink-0 ml-auto">
-                                            {project.photos.length > 0 && (
-                                                <div className="relative w-full h-full">
+                                            <div className="relative w-full h-full">
+                                                {project.videoCover ? (
+                                                    <div className="w-full h-full">
+                                                        <VimeoPlayer 
+                                                            vimeoId={project.videoCover.vimeoId}
+                                                            play="disabled" 
+                                                            mute="disabled"
+                                                        />
+                                                    </div>
+                                                ) : project.photos.length > 0 && (
                                                     <Image 
                                                         src={project.photos[0]} 
                                                         alt={project.name} 
@@ -172,8 +196,8 @@ const ProjectList = ({ projects: propProjects }: ProjectListProps) => {
                                                         className="object-contain"
                                                         priority
                                                     />
-                                                </div>
-                                            )}
+                                                )}
+                                            </div>
                                         </div>
                                     </div>
                                     <div className="flex-grow flex flex-col items-start gap-6">

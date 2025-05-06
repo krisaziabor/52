@@ -3,6 +3,11 @@ export interface Project {
   name: string;
   description: string;
   photos: string[]; // Array of photo URLs
+  videoCover?: {
+    vimeoId: string;
+    autoplay?: boolean;
+    muted?: boolean;
+  }; // Optional video cover
   comingSoon?: boolean; // Optional flag to mark as coming soon
   passwordProtected?: boolean; // Optional flag to mark as password protected
 }
