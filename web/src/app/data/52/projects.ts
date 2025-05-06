@@ -3,6 +3,11 @@ export interface Project {
   name: string;
   description: string;
   photos: string[]; // Array of photo URLs
+  videoCover?: {
+    vimeoId: string;
+    autoplay?: boolean;
+    muted?: boolean;
+  }; // Optional video cover
   comingSoon?: boolean; // Optional flag to mark as coming soon
   passwordProtected?: boolean; // Optional flag to mark as password protected
 }
@@ -36,6 +41,6 @@ export const projects: Project[] = [
     name: "For Jasmine Ross & Beauty Plus",
     description:
       "Making a website for my friend Jasmine as a gift for her photo thesis show <3",
-    photos: ["/studies/52/04/1.jpg"],
+    photos: ["/studies/52/04/Cover5.jpg"],
   },
 ];

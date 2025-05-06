@@ -1,10 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
-import dynamic from 'next/dynamic';
-
-// Import the ImageModal component
-const ImageModal = dynamic(() => import('./ImageModal'), { ssr: false });
+import React, { useState, useRef } from 'react';
 
 interface ImageCarouselProps {
   images: {

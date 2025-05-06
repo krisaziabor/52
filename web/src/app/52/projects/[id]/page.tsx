@@ -13,6 +13,7 @@ import VimeoWrapper from '@/app/components/VimeoWrapper';
 import ClientMarkdownCarousel from '@/app/components/ClientMarkdownCarousel';
 import Footer from '@/app/footer';
 import ProjectContentWrapper from '@/app/components/ProjectContentWrapper';
+import VideoCover from '@/app/components/VideoCover';
 
 // Custom Markdown components
 const MarkdownImage = ({ alt, src }: { alt?: string; src?: string }) => {
@@ -144,6 +145,11 @@ export default async function ProjectPage(props: ProjectPageProps) {
               VimeoPlayer: {
                 component: ({ id }: { id: string }) => (
                   <VimeoWrapper vimeoId={id} />
+                ),
+              },
+              VideoCover: {
+                component: ({ id }: { id: string }) => (
+                  <VideoCover vimeoId={id} />
                 ),
               },
               ImageCarousel: {

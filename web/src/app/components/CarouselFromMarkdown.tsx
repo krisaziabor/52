@@ -35,7 +35,7 @@ const CarouselFromMarkdown: React.FC<CarouselFromMarkdownProps> = ({
     let match;
     
     while ((match = imageRegex.exec(markdownContent)) !== null) {
-      const alt = match[1] || `Image ${images.length + 1}`;
+      const alt: string = match[1] || `Image ${images.length + 1}`;
       let src = match[2];
       
       // Make sure the src has a leading slash if it doesn't already
