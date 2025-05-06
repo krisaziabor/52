@@ -25,10 +25,17 @@ export const projects: Project[] = [
   },
   {
     id: 3,
-    name: "Junior Seminar",
+    name: "No Idea If This Is Bad Or Not",
     description:
       "Crafting a homemade font, website, and visual identity for my junior seminar's exhibition.",
     photos: ["/studies/03/01.jpg"],
     comingSoon: true,
+  },
+  {
+    id: 4,
+    name: "For Jasmine Ross & Beauty Plus",
+    description:
+      "Making a website for my friend Jasmine as a gift for her photo thesis show <3",
+    photos: ["/studies/52/04/1.jpg"],
   },
 ];
