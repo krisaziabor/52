@@ -60,7 +60,7 @@ export const metadata: Metadata = {
     "A showcase of Kris Aziabor's product work.",
   icons: {
     icon: "icon.ico",
-    apple: "/preview.jpg",
+    apple: "/preview1.jpg",
   },
 
   // This is where you can add your Open Graph details:
@@ -72,7 +72,7 @@ export const metadata: Metadata = {
     siteName: "Kris Aziabor",
     images: [
       {
-        url: "/preview.jpg",
+        url: "/preview1.jpg",
         width: 1200,
         height: 630,
       },
@@ -87,7 +87,7 @@ export const metadata: Metadata = {
     title: "Kris Aziabor | Product",
     description:
       "A showcase of Kris Aziabor's product work.",
-    images: ["/preview.jpg"],
+    images: ["/preview1.jpg"],
   },
 };
 
